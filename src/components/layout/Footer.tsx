@@ -12,13 +12,13 @@ export function Footer() {
       <div className="container-max container-px py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="relative h-12 w-20 rounded-2xl border border-[rgba(0,229,255,0.22)] bg-[rgba(0,229,255,0.06)] overflow-hidden">
+            <div className="relative h-12 w-32 rounded-2xl bg-[rgba(0,229,255,0.06)] overflow-hidden">
               <Image
                 src="/images/logo.png"
                 alt="TechLine Venture"
                 fill
-                sizes="80px"
-                className="object-contain p-2"
+                sizes="128px"
+                className="object-contain p-1.5"
               />
             </div>
             <p className="mt-3 muted text-sm leading-relaxed">
@@ -103,4 +103,3 @@ export function Footer() {
     </footer>
   );
 }
-

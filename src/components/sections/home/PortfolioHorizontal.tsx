@@ -1,12 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 import { portfolio } from "@/src/lib/data";
 import { SectionReveal } from "@/src/components/ui/SectionReveal";
 import { MagneticButton } from "@/src/components/ui/MagneticButton";
+import { PortfolioCard } from "@/src/components/ui/PortfolioCard";
 
 export function PortfolioHorizontal() {
   const reduceMotion = useReducedMotion();
@@ -102,31 +102,14 @@ export function PortfolioHorizontal() {
             }`}
             style={{ willChange: "transform" }}
           >
-            {portfolio.slice(0, 4).map((p) => (
+            {portfolio.slice(0, 4).map((p, idx) => (
               <motion.div
                 key={p.id}
-                className="relative h-[260px] w-[320px] sm:w-auto sm:h-[240px] lg:w-[420px] lg:h-[320px] rounded-3xl overflow-hidden border border-[rgba(0,229,255,0.14)]"
+                className="relative h-[360px] w-[320px] sm:h-[380px] sm:w-auto lg:h-[420px] lg:w-[420px]"
                 whileHover={reduceMotion ? undefined : { y: -4 }}
                 transition={{ duration: 0.2 }}
-                style={{
-                  background:
-                    "radial-gradient(700px 320px at 20% 0%, rgba(0,229,255,0.18), transparent 60%), linear-gradient(180deg, rgba(13,27,47,0.95), rgba(5,13,31,0.85))",
-                }}
               >
-                                <div className="relative z-10 p-7 h-full flex flex-col justify-between">
-                  <div className="inline-flex w-fit rounded-full border border-[rgba(0,229,255,0.16)] bg-[rgba(0,229,255,0.06)] px-3 py-1 text-xs text-cyan">
-                    {p.category}
-                  </div>
-                  <div>
-                    <div className="text-2xl font-[800] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-                      {p.title}
-                    </div>
-                    <div className="mt-2 text-sm muted">{p.tag}</div>
-                    <Link href="/portfolio" className="mt-4 inline-flex text-sm text-cyan hover:underline">
-                      View details
-                    </Link>
-                  </div>
-                </div>
+                <PortfolioCard item={p} index={idx} />
               </motion.div>
             ))}
           </div>
@@ -141,4 +124,3 @@ export function PortfolioHorizontal() {
     </section>
   );
 }
-

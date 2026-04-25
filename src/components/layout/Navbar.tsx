@@ -69,7 +69,7 @@ export function Navbar() {
             <div className="h-[76px] flex items-center justify-between">
               <Link href="/" className="flex items-center gap-3 group">
                 <motion.span 
-                  className="relative h-10 w-16 rounded-2xl border border-[rgba(0,229,255,0.22)] bg-[rgba(0,229,255,0.06)] overflow-hidden"
+                  className="relative h-10 w-24 rounded-2xl bg-[rgba(0,229,255,0.06)] overflow-hidden"
                   whileHover={reduceMotion ? undefined : { scale: 1.05, rotate: 5 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
                 >
@@ -77,8 +77,8 @@ export function Navbar() {
                     src="/images/logo.png"
                     alt="TechLine Venture"
                     fill
-                    sizes="64px"
-                    className="object-contain p-2"
+                    sizes="96px"
+                    className="object-contain p-1.5"
                     priority
                   />
                 </motion.span>
