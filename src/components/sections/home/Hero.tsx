@@ -103,44 +103,44 @@ export function Hero() {
   }, [reduceMotion]);
 
   return (
-    <section className="relative overflow-hidden z-10">
+    <section className="relative overflow-hidden z-10 lg:min-h-0 min-h-[100svh] flex flex-col justify-center lg:justify-start">
       <div className="absolute inset-0 pointer-events-none -z-10" style={{
         background: "radial-gradient(900px 600px at 15% 10%, rgba(0,229,255,0.12), transparent 60%), radial-gradient(850px 520px at 80% 0%, rgba(0,184,204,0.10), transparent 60%)"
       }} />
       <HeroParticles count={particleCount} />
 
-      <div className="container-max container-px relative z-10 pb-16 sm:pb-20 lg:pb-28">
-        <div className="mt-[76px] grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-12">
-          <div>
+      <div className="container-max container-px relative z-10 py-20 sm:py-24 lg:pt-0 lg:pb-28">
+        <div className="mt-12 sm:mt-16 lg:mt-[76px] grid gap-16 lg:grid-cols-2 lg:items-center lg:gap-12">
+          <div className="text-center lg:text-left">
             <h1
-              className="mt-4 text-[34px] leading-[1.14] sm:mt-6 sm:text-[56px] sm:leading-[1.12] lg:text-[64px] lg:leading-[1.12] font-[800] tracking-tight"
+              className="mt-4 text-[38px] leading-[1.1] sm:mt-6 sm:text-[56px] sm:leading-[1.12] lg:text-[64px] lg:leading-[1.12] font-[800] tracking-tight"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Building{" "}
               <span className="text-cyan inline-block align-baseline min-w-[9.5ch]">
                 {smart}
               </span>
-              <br />
-              <span className="text-gray2">For Modern Business.</span>
+              <br className="hidden sm:block" />
+              <span className="text-gray2"> For Modern Business.</span>
             </h1>
 
-            <p className="mt-4 max-w-xl leading-relaxed muted sm:mt-5">
+            <p className="mt-5 mx-auto max-w-lg leading-relaxed muted sm:mx-0 sm:mt-6 sm:max-w-xl">
               We craft high-performance websites, mobile apps, and custom software that looks premium, feels fast,
               and helps Karachi businesses compete globally.
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row">
-              <MagneticButton href="/contact" variant="primary" className="w-full justify-center sm:w-auto">
+            <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-start">
+              <MagneticButton href="/contact" variant="primary" className="w-full justify-center sm:w-auto px-8">
                 Get a Quote
               </MagneticButton>
-              <MagneticButton href="/portfolio" variant="outline" className="w-full justify-center sm:w-auto">
+              <MagneticButton href="/portfolio" variant="outline" className="w-full justify-center sm:w-auto px-8">
                 View Work
               </MagneticButton>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="relative mx-auto aspect-[0.92] w-full max-w-[360px] sm:max-w-[520px] sm:aspect-square">
+          <div className="relative flex justify-center">
+            <div className="relative aspect-square w-full max-w-[320px] sm:max-w-[520px]">
               <div className="absolute inset-0 rounded-full border border-[rgba(0,229,255,0.10)]" />
               <motion.div
                 className="absolute inset-[6%] rounded-full border border-[rgba(0,229,255,0.16)]"
@@ -155,24 +155,26 @@ export function Hero() {
                 style={{ willChange: "transform" }}
               />
 
-              <div className="absolute inset-[24%] z-10 flex flex-col justify-between card p-5 sm:inset-[26%] sm:p-6">
-                <div className="text-[11px] text-gray2 sm:text-xs">TechLine Venture</div>
+              <div className="absolute inset-[12%] z-10 flex flex-col justify-between card p-6 sm:inset-[26%] sm:p-7">
+                <div className="text-[11px] font-medium uppercase tracking-widest text-cyan/70 sm:text-xs">
+                  TechLine Venture
+                </div>
                 <div className="mt-3">
-                  <div className="text-base font-[800] tracking-tight sm:text-lg" style={{ fontFamily: "var(--font-display)" }}>
+                  <div className="text-lg font-[800] leading-tight tracking-tight sm:text-xl" style={{ fontFamily: "var(--font-display)" }}>
                     Premium, fast, scalable
                   </div>
                   <div className="mt-2 text-xs muted sm:text-sm">
                     From design to deployment — one partner, end-to-end.
                   </div>
                 </div>
-                <div className="mt-5 grid grid-cols-3 gap-2 text-[11px] text-[rgba(197,213,232,0.72)] sm:mt-6 sm:gap-3 sm:text-xs">
-                  <div className="rounded-xl border border-[rgba(0,229,255,0.10)] bg-[rgba(0,229,255,0.05)] px-2 py-2 text-center sm:px-3">
+                <div className="mt-5 grid grid-cols-3 gap-2 text-[11px] font-medium sm:mt-6 sm:gap-3 sm:text-xs">
+                  <div className="rounded-xl border border-[rgba(0,229,255,0.10)] bg-[rgba(0,229,255,0.05)] px-1 py-2 text-center text-gray2 sm:px-3">
                     Web
                   </div>
-                  <div className="rounded-xl border border-[rgba(0,229,255,0.10)] bg-[rgba(0,229,255,0.05)] px-2 py-2 text-center sm:px-3">
+                  <div className="rounded-xl border border-[rgba(0,229,255,0.10)] bg-[rgba(0,229,255,0.05)] px-1 py-2 text-center text-gray2 sm:px-3">
                     Mobile
                   </div>
-                  <div className="rounded-xl border border-[rgba(0,229,255,0.10)] bg-[rgba(0,229,255,0.05)] px-2 py-2 text-center sm:px-3">
+                  <div className="rounded-xl border border-[rgba(0,229,255,0.10)] bg-[rgba(0,229,255,0.05)] px-1 py-2 text-center text-gray2 sm:px-3">
                     Software
                   </div>
                 </div>
@@ -208,7 +210,16 @@ export function Hero() {
           </div>
         </div>
 
-              </div>
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-2"
+        >
+          <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-gray/40">Scroll</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-cyan/40 to-transparent" />
+        </motion.div>
+      </div>
     </section>
   );
 }

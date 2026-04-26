@@ -10,13 +10,13 @@ export const defaultOgImage = "/images/logo.png";
 
 const defaultKeywords = [
   "TechLine Venture",
-  "software company Pakistan",
-  "website development Karachi",
-  "mobile app development Pakistan",
+  "software company",
+  "website development",
+  "mobile app development",
   "custom software development",
   "UI UX design agency",
   "ecommerce development",
-  "SEO services Pakistan",
+  "SEO services",
 ] as const;
 
 export const serviceSlugs: Record<string, string> = {

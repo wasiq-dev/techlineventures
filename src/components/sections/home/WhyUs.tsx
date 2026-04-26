@@ -57,14 +57,21 @@ export function WhyUs() {
             viewport={{ once: true, amount: 0.2 }}
           >
             {points.map((p) => (
-              <motion.div key={p.n} variants={slideInRight} className="card p-6">
-                <div className="flex items-start gap-4">
-                  <div className="text-cyan text-sm font-medium">{p.n}</div>
+              <motion.div 
+                key={p.n} 
+                variants={slideInRight} 
+                className="group relative overflow-hidden rounded-2xl border border-[rgba(0,229,255,0.12)] bg-[rgba(255,255,255,0.02)] p-6 transition-all duration-300 hover:border-cyan/40 hover:bg-[rgba(0,229,255,0.04)]"
+              >
+                <div className="absolute inset-0 -z-10 bg-cyan/0 transition-colors duration-500 group-hover:bg-cyan/[0.02]" />
+                <div className="flex items-start gap-5">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[rgba(0,229,255,0.16)] bg-[rgba(0,229,255,0.06)] text-xs font-bold text-cyan transition-all duration-300 group-hover:scale-110 group-hover:bg-cyan group-hover:text-[#050d1f]">
+                    {p.n}
+                  </div>
                   <div className="flex-1">
-                    <div className="text-lg font-[800] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+                    <div className="text-xl font-[800] tracking-tight text-white transition-colors group-hover:text-cyan" style={{ fontFamily: "var(--font-display)" }}>
                       {p.title}
                     </div>
-                    <div className="mt-2 text-sm muted leading-relaxed">{p.desc}</div>
+                    <div className="mt-2 text-sm leading-relaxed text-[rgba(197,213,232,0.7)] transition-colors group-hover:text-[rgba(197,213,232,0.9)]">{p.desc}</div>
                   </div>
                 </div>
               </motion.div>

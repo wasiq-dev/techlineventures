@@ -74,6 +74,10 @@ export function PortfolioHorizontal() {
 
   return (
     <section id="portfolio" className="relative w-full overflow-hidden bg-[#050d1f] py-24 md:py-32">
+      {/* Background Decorative Glow */}
+      <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-cyan/5 blur-[120px]" />
+      <div className="absolute bottom-0 left-0 -z-10 h-[400px] w-[400px] rounded-full bg-cyan/5 blur-[100px]" />
+      
       <div className="container-max container-px">
         <SectionReveal>
           <div className="flex items-end justify-between gap-6">
@@ -94,23 +98,21 @@ export function PortfolioHorizontal() {
       </div>
 
       <div ref={pinRef} className="mt-10 overflow-hidden relative">
-        <div className="container-max container-px">
+        <div className={`container-max container-px ${!isDesktop ? "flex flex-col items-center" : ""}`}>
           <div
             ref={trackRef}
             className={`${
-              isDesktop ? "flex gap-5 w-max pr-10" : "grid gap-5 sm:grid-cols-2"
+              isDesktop ? "flex gap-8 w-max pr-[20vw]" : "grid gap-6 justify-center"
             }`}
             style={{ willChange: "transform" }}
           >
             {portfolio.slice(0, 4).map((p, idx) => (
-              <motion.div
+              <div
                 key={p.id}
-                className="relative h-[360px] w-[320px] sm:h-[380px] sm:w-auto lg:h-[420px] lg:w-[420px]"
-                whileHover={reduceMotion ? undefined : { y: -4 }}
-                transition={{ duration: 0.2 }}
+                className="relative h-[380px] w-[calc(100vw-40px)] max-w-[340px] sm:h-[400px] sm:max-w-[400px] lg:h-[420px] lg:w-[420px]"
               >
                 <PortfolioCard item={p} index={idx} />
-              </motion.div>
+              </div>
             ))}
           </div>
 

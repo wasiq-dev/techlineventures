@@ -68,13 +68,14 @@ export function Testimonials() {
               {trustHighlights.map(({ icon: Icon, label, value }) => (
                 <div
                   key={label}
-                  className="rounded-2xl border border-[rgba(0,229,255,0.12)] bg-[rgba(255,255,255,0.03)] px-4 py-4 backdrop-blur-sm"
+                  className="group relative rounded-2xl border border-[rgba(0,229,255,0.12)] bg-[rgba(255,255,255,0.03)] px-4 py-4 backdrop-blur-sm transition-all duration-300 hover:border-cyan/40 hover:bg-[rgba(0,229,255,0.06)] hover:shadow-[0_0_20px_rgba(0,229,255,0.1)]"
                 >
-                  <div className="flex items-center gap-2 text-cyan">
+                  <div className="absolute inset-0 -z-10 rounded-2xl bg-cyan/0 transition-colors duration-500 group-hover:bg-cyan/[0.02]" />
+                  <div className="flex items-center gap-2 text-cyan transition-transform duration-300 group-hover:translate-x-1">
                     <Icon className="h-4 w-4" />
-                    <span className="text-[11px] uppercase tracking-[0.22em] text-[rgba(197,213,232,0.56)]">{label}</span>
+                    <span className="text-[11px] uppercase tracking-[0.22em] text-[rgba(197,213,232,0.56)] group-hover:text-[rgba(197,213,232,0.8)]">{label}</span>
                   </div>
-                  <div className="mt-3 text-sm font-medium text-white">{value}</div>
+                  <div className="mt-3 text-sm font-medium text-white group-hover:text-cyan transition-colors">{value}</div>
                 </div>
               ))}
             </div>

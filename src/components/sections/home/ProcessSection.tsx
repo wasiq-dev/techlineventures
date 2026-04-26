@@ -44,12 +44,24 @@ export function ProcessSection() {
             viewport={{ once: true, amount: 0.2 }}
           >
             {processSteps.map((s, idx) => (
-              <motion.div key={s.title} variants={fadeUp} className="card p-6 relative">
-                <div className="text-cyan text-sm font-medium">{String(idx + 1).padStart(2, "0")}</div>
-                <div className="mt-3 text-lg font-[800] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+              <motion.div 
+                key={s.title} 
+                variants={fadeUp} 
+                className="group relative overflow-hidden rounded-[28px] border border-[rgba(0,229,255,0.12)] bg-[rgba(255,255,255,0.02)] p-8 transition-all duration-300 hover:border-cyan/40 hover:bg-[rgba(0,229,255,0.04)] hover:shadow-[0_0_30px_rgba(0,229,255,0.1)]"
+              >
+                <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,229,255,0.08),transparent_50%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                
+                <div className="flex items-center justify-between">
+                  <div className="text-cyan text-sm font-bold tracking-widest">{String(idx + 1).padStart(2, "0")}</div>
+                  <div className="h-2 w-2 rounded-full bg-cyan/20 transition-all duration-300 group-hover:bg-cyan group-hover:shadow-[0_0_10px_rgba(0,229,255,0.8)]" />
+                </div>
+                
+                <div className="mt-6 text-xl font-[800] tracking-tight text-white transition-colors group-hover:text-cyan" style={{ fontFamily: "var(--font-display)" }}>
                   {s.title}
                 </div>
-                <div className="mt-2 text-sm muted leading-relaxed">{s.description}</div>
+                <div className="mt-3 text-sm leading-relaxed text-[rgba(197,213,232,0.7)] transition-colors group-hover:text-[rgba(197,213,232,0.9)]">{s.description}</div>
+                
+                <div className="mt-6 h-[2px] w-0 bg-cyan transition-all duration-500 group-hover:w-full" />
               </motion.div>
             ))}
           </motion.div>

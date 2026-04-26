@@ -48,8 +48,14 @@ export function Navbar() {
   const isHomePage = pathname === "/";
 
   const activeHref = useMemo(() => {
+    // Priority 1: Exact match
     const exact = navItems.find((i) => i.href === pathname);
-    return exact?.href ?? "/";
+    if (exact) return exact.href;
+    
+    // Priority 2: Sub-page match (for services)
+    if (pathname.startsWith('/services/')) return '/services';
+    
+    return "/";
   }, [pathname]);
 
   useEffect(() => {
@@ -97,21 +103,21 @@ export function Navbar() {
         <div className={scrolled || !isHomePage ? "glass-nav" : "bg-transparent"}>
           <div className="container-max container-px">
             <div className="h-[76px] flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-3 group">
-                <motion.span 
-                  className="relative h-10 w-24 rounded-2xl bg-[rgba(0,229,255,0.06)] overflow-hidden"
-                  whileHover={reduceMotion ? undefined : { scale: 1.05, rotate: 5 }}
+              <Link href="/" className="flex items-center group">
+                <motion.div 
+                  className="relative h-12 w-32"
+                  whileHover={reduceMotion ? undefined : { scale: 1.05 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
                 >
                   <Image
                     src="/images/logo.png"
                     alt="TechLine Venture"
                     fill
-                    sizes="96px"
-                    className="object-contain p-1.5"
+                    sizes="128px"
+                    className="object-contain"
                     priority
                   />
-                </motion.span>
+                </motion.div>
               </Link>
 
               <nav className="hidden lg:flex items-center gap-8 relative">

@@ -12,13 +12,13 @@ export function Footer() {
       <div className="container-max container-px py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="relative h-12 w-32 rounded-2xl bg-[rgba(0,229,255,0.06)] overflow-hidden">
+            <div className="relative h-16 w-44 -ml-2">
               <Image
                 src="/images/logo.png"
                 alt="TechLine Venture"
                 fill
-                sizes="128px"
-                className="object-contain p-1.5"
+                sizes="176px"
+                className="object-contain object-left"
               />
             </div>
             <p className="mt-3 muted text-sm leading-relaxed">
@@ -97,7 +97,6 @@ export function Footer() {
 
         <div className="mt-12 pt-6 border-t border-[rgba(0,229,255,0.10)] flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-xs text-[rgba(197,213,232,0.72)]">
           <div>© {new Date().getFullYear()} TechLine Venture. All rights reserved.</div>
-          <div>Karachi, Pakistan</div>
         </div>
       </div>
     </footer>
