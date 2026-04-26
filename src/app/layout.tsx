@@ -5,7 +5,6 @@ import "./globals.css";
 import { Navbar } from "@/src/components/layout/Navbar";
 import { Footer } from "@/src/components/layout/Footer";
 import { CursorGlow } from "@/src/components/ui/CursorGlow";
-import { LoadingScreen } from "@/src/components/ui/LoadingScreen";
 import { LenisProvider } from "@/src/components/ui/LenisProvider";
 import { PageTransition } from "@/src/components/ui/PageTransition";
 import { WelcomePopup } from "@/src/components/ui/WelcomePopup";
@@ -140,7 +139,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <CursorGlow />
         <div className="relative flex min-h-screen flex-col">
-          <LoadingScreen />
           <LenisProvider>
             <Navbar />
             <PageTransition>{children}</PageTransition>

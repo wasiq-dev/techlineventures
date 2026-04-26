@@ -45,6 +45,7 @@ export function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const linkRefs = useRef<Record<string, HTMLElement | null>>({});
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
+  const navRef = useRef<HTMLElement>(null);
   const isHomePage = pathname === "/";
 
   const activeHref = useMemo(() => {
@@ -65,34 +66,27 @@ export function Navbar() {
 
   useEffect(() => {
     const update = () => {
-      // Try to get element from ref first
+      // 1. Try to get element from our specific linkRefs
       let el = linkRefs.current[activeHref];
       
-      // Fallback: If ref is missing, try to find it in the DOM
-      if (!el) {
-        const nav = document.querySelector('nav');
-        if (nav) {
-          const links = nav.querySelectorAll('a, button');
-          links.forEach(node => {
-            const text = node.textContent?.trim();
-            const item = navItems.find(i => i.label === text);
-            if (item && item.href === activeHref) {
-              el = node as HTMLElement;
-            }
-          });
-        }
+      // 2. Fallback: If ref is missing, search within the correct desktop nav
+      if (!el && navRef.current) {
+        const links = navRef.current.querySelectorAll('a, button');
+        links.forEach(node => {
+          const text = node.textContent?.trim();
+          const item = navItems.find(i => i.label === text);
+          if (item && item.href === activeHref) {
+            el = node as HTMLElement;
+          }
+        });
       }
 
-      if (!el) return;
+      if (!el || !navRef.current) return;
 
-      const parent = el.parentElement;
-      if (!parent) return;
-
-      // For the Services button, we need to handle the relative container
       const r = el.getBoundingClientRect();
-      const navRect = el.closest('nav')?.getBoundingClientRect();
+      const navRect = navRef.current.getBoundingClientRect();
       
-      if (r.width > 0 && navRect) {
+      if (r.width > 0) {
         setIndicator({ 
           left: r.left - navRect.left, 
           width: r.width 
@@ -103,9 +97,8 @@ export function Navbar() {
     update();
     const timers = [
       setTimeout(update, 100),
-      setTimeout(update, 300),
-      setTimeout(update, 800),
-      setTimeout(update, 1500) // Extra safety for slow loads
+      setTimeout(update, 400),
+      setTimeout(update, 1000)
     ];
 
     window.addEventListener("resize", update);
@@ -113,7 +106,7 @@ export function Navbar() {
       window.removeEventListener("resize", update);
       timers.forEach(clearTimeout);
     };
-  }, [activeHref, pathname, open]);
+  }, [activeHref, pathname]);
 
   useEffect(() => {
     if (!open) return;
@@ -160,7 +153,7 @@ export function Navbar() {
                 </motion.div>
               </Link>
 
-              <nav className="hidden lg:flex items-center gap-8 relative">
+              <nav ref={navRef} className="hidden lg:flex items-center gap-8 relative">
                 {navItems.map((item) => (
                   item.label === "Services" ? (
                     <div 
