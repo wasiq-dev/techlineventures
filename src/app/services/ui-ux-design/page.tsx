@@ -1,9 +1,10 @@
+import type { Metadata } from "next";
+
 import { ServiceDetailContent } from "@/src/components/sections/services/ServiceDetailContent";
+import { buildServiceMetadata } from "@/src/lib/seo";
 
-export const metadata = {
-  title: "UI/UX Design",
-};
+export const metadata: Metadata = buildServiceMetadata("uiux");
 
-export default function UIUXDesignPage() {
+export default function Page() {
   return <ServiceDetailContent serviceId="uiux" />;
 }

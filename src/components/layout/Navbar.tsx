@@ -82,6 +82,15 @@ export function Navbar() {
     if (!open) setMobileServicesOpen(false);
   }, [open]);
 
+  useEffect(() => {
+    const { body } = document;
+    const previousOverflow = body.style.overflow;
+    if (open) body.style.overflow = "hidden";
+    return () => {
+      body.style.overflow = previousOverflow;
+    };
+  }, [open]);
+
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
@@ -203,7 +212,7 @@ export function Navbar() {
               exit={reduceMotion ? undefined : { opacity: 0 }}
             />
             <motion.aside
-              className="absolute inset-0 flex flex-col"
+              className="absolute inset-0 flex flex-col overflow-y-auto overscroll-contain"
               initial={reduceMotion ? false : { y: 20, opacity: 0 }}
               animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
               exit={reduceMotion ? undefined : { y: 20, opacity: 0 }}
@@ -228,16 +237,16 @@ export function Navbar() {
                 </div>
               </div>
 
-              <div className="flex-1 flex items-center">
-                <div className="container-max container-px w-full">
-                  <div className="grid gap-4">
+              <div className="flex-1 min-h-0">
+                <div className="container-max container-px w-full py-4 pb-10 sm:py-6 sm:pb-12">
+                  <div className="grid gap-4 sm:gap-5">
                     {navItems.map((item) =>
                       item.label === "Services" ? (
                         <div key={item.href} className="grid gap-3">
                           <button
                             type="button"
                             onClick={() => setMobileServicesOpen((prev) => !prev)}
-                            className={`flex items-center justify-between text-left text-3xl sm:text-4xl font-[800] tracking-tight ${
+                            className={`flex items-center justify-between text-left text-[28px] sm:text-4xl font-[800] tracking-tight ${
                               pathname.startsWith("/services") ? "text-cyan" : "text-white"
                             }`}
                             style={{ fontFamily: "var(--font-display)" }}
@@ -255,7 +264,7 @@ export function Navbar() {
                                 exit={reduceMotion ? undefined : { opacity: 0, height: 0 }}
                                 className="overflow-hidden"
                               >
-                                <div className="grid gap-2 rounded-3xl border border-[rgba(0,229,255,0.14)] bg-[rgba(5,13,31,0.35)] p-4">
+                                <div className="grid gap-2 rounded-3xl border border-[rgba(0,229,255,0.14)] bg-[rgba(5,13,31,0.35)] p-4 sm:p-5">
                                   <Link
                                     href="/services"
                                     onClick={() => setOpen(false)}
@@ -283,7 +292,7 @@ export function Navbar() {
                           key={item.href}
                           href={item.href}
                           onClick={() => setOpen(false)}
-                          className={`text-3xl sm:text-4xl font-[800] tracking-tight ${
+                          className={`text-[28px] sm:text-4xl font-[800] tracking-tight ${
                             activeHref === item.href ? "text-cyan" : "text-white"
                           }`}
                           style={{ fontFamily: "var(--font-display)" }}
@@ -294,7 +303,7 @@ export function Navbar() {
                     )}
                   </div>
 
-                  <div className="mt-10">
+                  <div className="mt-8 sm:mt-10">
                     <MagneticButton href="/contact" variant="primary" className="w-full sm:w-auto">
                       Get a Quote
                     </MagneticButton>

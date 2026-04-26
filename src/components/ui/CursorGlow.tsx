@@ -42,13 +42,13 @@ export function CursorGlow() {
     <div
       ref={glowRef}
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-0 h-[300px] w-[300px]"
+      className="pointer-events-none fixed left-0 top-0 z-[8] h-[320px] w-[320px] mix-blend-screen"
       style={{
         background:
-          "radial-gradient(circle, rgba(0,229,255,0.06) 0%, rgba(0,229,255,0.00) 70%)",
-        filter: "blur(0px)",
+          "radial-gradient(circle, rgba(0,229,255,0.14) 0%, rgba(0,229,255,0.07) 34%, rgba(0,229,255,0.00) 72%)",
+        filter: "blur(10px)",
+        opacity: 0.72,
       }}
     />
   );
 }
-
