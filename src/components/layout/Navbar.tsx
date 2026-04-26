@@ -43,18 +43,16 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const linkRefs = useRef<Record<string, HTMLElement | null>>({});
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
   const isHomePage = pathname === "/";
 
   const activeHref = useMemo(() => {
-    // Priority 1: Exact match
-    const exact = navItems.find((i) => i.href === pathname);
-    if (exact) return exact.href;
-    
-    // Priority 2: Sub-page match (for services)
-    if (pathname.startsWith('/services/')) return '/services';
-    
+    // Check main nav items first (excluding Home)
+    const found = navItems.find((item) => item.href !== "/" && pathname.startsWith(item.href));
+    if (found) return found.href;
+
+    // Fallback to Home
     return "/";
   }, [pathname]);
 
@@ -66,14 +64,56 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const el = linkRefs.current[activeHref];
-    if (!el) return;
-    const parent = el.parentElement;
-    if (!parent) return;
-    const r = el.getBoundingClientRect();
-    const pr = parent.getBoundingClientRect();
-    setIndicator({ left: r.left - pr.left, width: r.width });
-  }, [activeHref, open]);
+    const update = () => {
+      // Try to get element from ref first
+      let el = linkRefs.current[activeHref];
+      
+      // Fallback: If ref is missing, try to find it in the DOM
+      if (!el) {
+        const nav = document.querySelector('nav');
+        if (nav) {
+          const links = nav.querySelectorAll('a, button');
+          links.forEach(node => {
+            const text = node.textContent?.trim();
+            const item = navItems.find(i => i.label === text);
+            if (item && item.href === activeHref) {
+              el = node as HTMLElement;
+            }
+          });
+        }
+      }
+
+      if (!el) return;
+
+      const parent = el.parentElement;
+      if (!parent) return;
+
+      // For the Services button, we need to handle the relative container
+      const r = el.getBoundingClientRect();
+      const navRect = el.closest('nav')?.getBoundingClientRect();
+      
+      if (r.width > 0 && navRect) {
+        setIndicator({ 
+          left: r.left - navRect.left, 
+          width: r.width 
+        });
+      }
+    };
+
+    update();
+    const timers = [
+      setTimeout(update, 100),
+      setTimeout(update, 300),
+      setTimeout(update, 800),
+      setTimeout(update, 1500) // Extra safety for slow loads
+    ];
+
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("resize", update);
+      timers.forEach(clearTimeout);
+    };
+  }, [activeHref, pathname, open]);
 
   useEffect(() => {
     if (!open) return;
@@ -130,6 +170,9 @@ export function Navbar() {
                       onMouseLeave={() => setServicesDropdown(false)}
                     >
                       <button
+                        ref={(node) => {
+                          linkRefs.current[item.href] = node;
+                        }}
                         className={`text-sm transition ${
                           activeHref === item.href ? "text-white" : "text-[rgba(197,213,232,0.78)] hover:text-white"
                         }`}

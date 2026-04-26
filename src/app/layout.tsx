@@ -8,6 +8,7 @@ import { CursorGlow } from "@/src/components/ui/CursorGlow";
 import { LoadingScreen } from "@/src/components/ui/LoadingScreen";
 import { LenisProvider } from "@/src/components/ui/LenisProvider";
 import { PageTransition } from "@/src/components/ui/PageTransition";
+import { WelcomePopup } from "@/src/components/ui/WelcomePopup";
 import { company } from "@/src/lib/data";
 import { defaultOgImage, siteDescription, siteName, siteUrl } from "@/src/lib/seo";
 
@@ -146,6 +147,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="mt-auto">
               <Footer />
             </div>
+            <WelcomePopup />
           </LenisProvider>
         </div>
       </body>
