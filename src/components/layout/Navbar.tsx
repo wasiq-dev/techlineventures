@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
+import { RiMenu3Line, RiCloseLine, RiArrowDownSLine } from "react-icons/ri";
 
 import { company, services } from "@/src/lib/data";
 import { MagneticButton } from "@/src/components/ui/MagneticButton";
@@ -20,12 +20,29 @@ const navItems: NavItem[] = [
   { href: "/contact", label: "Contact" },
 ];
 
+const serviceSlugs: Record<string, string> = {
+  web: "web-development",
+  mobile: "mobile-app-development",
+  ecommerce: "ecommerce-solutions",
+  uiux: "ui-ux-design",
+  software: "custom-software",
+  marketing: "digital-marketing-seo",
+  branding: "graphic-design-branding",
+  api: "api-integrations",
+  maintenance: "maintenance-support",
+};
+
+function getServiceHref(serviceId: string) {
+  return `/services/${serviceSlugs[serviceId] ?? serviceId}`;
+}
+
 export function Navbar() {
   const pathname = usePathname();
   const reduceMotion = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
   const isHomePage = pathname === "/";
@@ -59,6 +76,10 @@ export function Navbar() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) setMobileServicesOpen(false);
   }, [open]);
 
   return (
@@ -111,15 +132,7 @@ export function Navbar() {
                             {services.map((service) => (
                               <Link
                                 key={service.id}
-                                href={`/services/${service.id === 'web' ? 'web-development' : 
-                                        service.id === 'mobile' ? 'mobile-app-development' :
-                                        service.id === 'ecommerce' ? 'ecommerce-solutions' :
-                                        service.id === 'uiux' ? 'ui-ux-design' :
-                                        service.id === 'software' ? 'custom-software' :
-                                        service.id === 'marketing' ? 'digital-marketing-seo' :
-                                        service.id === 'branding' ? 'graphic-design-branding' :
-                                        service.id === 'api' ? 'api-integrations' :
-                                        service.id === 'maintenance' ? 'maintenance-support' : service.id}`}
+                                href={getServiceHref(service.id)}
                                 className="block py-2 px-3 text-sm text-[rgba(197,213,232,0.78)] hover:text-white hover:bg-[rgba(0,229,255,0.06)] rounded-lg transition"
                               >
                                 {service.title}
@@ -218,19 +231,67 @@ export function Navbar() {
               <div className="flex-1 flex items-center">
                 <div className="container-max container-px w-full">
                   <div className="grid gap-4">
-                    {navItems.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setOpen(false)}
-                        className={`text-3xl sm:text-4xl font-[800] tracking-tight ${
-                          activeHref === item.href ? "text-cyan" : "text-white"
-                        }`}
-                        style={{ fontFamily: "var(--font-display)" }}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
+                    {navItems.map((item) =>
+                      item.label === "Services" ? (
+                        <div key={item.href} className="grid gap-3">
+                          <button
+                            type="button"
+                            onClick={() => setMobileServicesOpen((prev) => !prev)}
+                            className={`flex items-center justify-between text-left text-3xl sm:text-4xl font-[800] tracking-tight ${
+                              pathname.startsWith("/services") ? "text-cyan" : "text-white"
+                            }`}
+                            style={{ fontFamily: "var(--font-display)" }}
+                          >
+                            <span>Services</span>
+                            <RiArrowDownSLine
+                              className={`h-8 w-8 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
+                            />
+                          </button>
+                          <AnimatePresence initial={false}>
+                            {mobileServicesOpen && (
+                              <motion.div
+                                initial={reduceMotion ? false : { opacity: 0, height: 0 }}
+                                animate={reduceMotion ? undefined : { opacity: 1, height: "auto" }}
+                                exit={reduceMotion ? undefined : { opacity: 0, height: 0 }}
+                                className="overflow-hidden"
+                              >
+                                <div className="grid gap-2 rounded-3xl border border-[rgba(0,229,255,0.14)] bg-[rgba(5,13,31,0.35)] p-4">
+                                  <Link
+                                    href="/services"
+                                    onClick={() => setOpen(false)}
+                                    className="rounded-2xl px-3 py-3 text-sm font-medium text-cyan"
+                                  >
+                                    All Services
+                                  </Link>
+                                  {services.map((service) => (
+                                    <Link
+                                      key={service.id}
+                                      href={getServiceHref(service.id)}
+                                      onClick={() => setOpen(false)}
+                                      className="rounded-2xl px-3 py-3 text-sm text-[rgba(197,213,232,0.82)] transition hover:bg-[rgba(0,229,255,0.06)] hover:text-white"
+                                    >
+                                      {service.title}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ) : (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setOpen(false)}
+                          className={`text-3xl sm:text-4xl font-[800] tracking-tight ${
+                            activeHref === item.href ? "text-cyan" : "text-white"
+                          }`}
+                          style={{ fontFamily: "var(--font-display)" }}
+                        >
+                          {item.label}
+                        </Link>
+                      )
+                    )}
                   </div>
 
                   <div className="mt-10">
