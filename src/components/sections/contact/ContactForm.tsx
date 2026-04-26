@@ -1,19 +1,24 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { RiCheckLine, RiLoader4Line } from "react-icons/ri";
-import { MagneticButton } from "@/src/components/ui/MagneticButton";
+import { RiArrowRightUpLine, RiCheckLine, RiLoader4Line, RiShieldCheckLine, RiSparklingLine, RiTimeLine } from "react-icons/ri";
 
 type FormState = {
   name: string;
   email: string;
   phone: string;
+  company: string;
   service: string;
   budget: string;
   message: string;
 };
 
 const budgets = ["< 50k PKR", "50k–150k PKR", "150k–400k PKR", "400k+ PKR"] as const;
+const trustPoints = [
+  { icon: RiTimeLine, label: "Fast response", value: "Within 1 business day" },
+  { icon: RiShieldCheckLine, label: "Clear process", value: "Scope, timeline, and quote" },
+  { icon: RiSparklingLine, label: "Built for growth", value: "Strategy-led recommendations" },
+] as const;
 
 function validate(v: FormState) {
   const e: Partial<Record<keyof FormState, string>> = {};
@@ -27,41 +32,37 @@ function validate(v: FormState) {
   return e;
 }
 
-function Field({
+function TextField({
   label,
   value,
   onChange,
   error,
   type = "text",
+  placeholder,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   error?: string;
   type?: string;
+  placeholder?: string;
 }) {
-  const filled = value.length > 0;
   return (
-    <div>
-      <div className="relative">
-        <input
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          type={type}
-          className={`w-full rounded-2xl border bg-[rgba(5,13,31,0.35)] px-4 pb-3 pt-6 text-sm outline-none transition ${
-            error ? "border-red-400/60" : "border-[rgba(0,229,255,0.14)] focus:border-[rgba(0,229,255,0.40)]"
-          }`}
-        />
-        <label
-          className={`pointer-events-none absolute left-4 top-4 text-xs transition ${
-            filled ? "text-cyan" : "text-[rgba(197,213,232,0.72)]"
-          }`}
-        >
-          {label}
-        </label>
-      </div>
+    <label className="block">
+      <span className="mb-2 block text-sm font-medium text-gray2">{label}</span>
+      <input
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        type={type}
+        placeholder={placeholder}
+        className={`w-full rounded-2xl border bg-[rgba(5,13,31,0.38)] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-[rgba(197,213,232,0.38)] ${
+          error
+            ? "border-red-400/60 focus:border-red-400/60"
+            : "border-[rgba(0,229,255,0.12)] focus:border-[rgba(0,229,255,0.38)] focus:bg-[rgba(5,13,31,0.52)]"
+        }`}
+      />
       {error && <div className="mt-2 text-xs text-red-300">{error}</div>}
-    </div>
+    </label>
   );
 }
 
@@ -70,6 +71,7 @@ export function ContactForm({ services }: { services: string[] }) {
     name: "",
     email: "",
     phone: "",
+    company: "",
     service: "",
     budget: "",
     message: "",
@@ -79,147 +81,192 @@ export function ContactForm({ services }: { services: string[] }) {
 
   const canSubmit = useMemo(() => status !== "loading", [status]);
 
-  const onSubmit = async () => {
-    const e = validate(form);
-    setErrors(e);
-    if (Object.keys(e).length) return;
+  const updateField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
+    setForm((s) => ({ ...s, [key]: value }));
+    setErrors((s) => {
+      if (!s[key]) return s;
+      return { ...s, [key]: undefined };
+    });
+    if (status === "success") setStatus("idle");
+  };
+
+  const onSubmit = async (event?: React.FormEvent<HTMLFormElement>) => {
+    event?.preventDefault();
+    const validationErrors = validate(form);
+    setErrors(validationErrors);
+    if (Object.keys(validationErrors).length) return;
     setStatus("loading");
     await new Promise((r) => setTimeout(r, 900));
     setStatus("success");
   };
 
   return (
-    <div className="card p-8 sm:p-10">
-      <div className="text-2xl font-[800] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-        Request a quote
-      </div>
-      <div className="mt-2 muted text-sm">We’ll get back quickly with the next steps.</div>
+    <div className="card overflow-hidden p-0">
+      <div className="relative">
+        <div className="absolute inset-x-0 top-0 h-24 bg-[rgba(0,229,255,0.06)] blur-3xl" />
+        <form onSubmit={onSubmit} className="relative grid gap-8 p-6 sm:p-8 lg:p-10">
+          <div className="grid gap-6 rounded-3xl border border-[rgba(0,229,255,0.12)] bg-[rgba(8,20,39,0.72)] p-6 sm:p-7">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div className="max-w-xl">
+                <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(0,229,255,0.16)] bg-[rgba(0,229,255,0.06)] px-3 py-1 text-xs text-cyan">
+                  <RiSparklingLine className="h-4 w-4" />
+                  Start your project brief
+                </div>
+                <div className="mt-4 text-2xl font-[800] tracking-tight text-white sm:text-3xl" style={{ fontFamily: "var(--font-display)" }}>
+                  Tell us what you need and we will map the right next step.
+                </div>
+                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[rgba(197,213,232,0.74)]">
+                  Share your goals, selected service, and budget range. We will reply with a practical scope, timeline, and quote.
+                </p>
+              </div>
+              <div className="min-w-[220px] rounded-3xl border border-[rgba(0,229,255,0.14)] bg-[rgba(255,255,255,0.02)] p-4">
+                <div className="text-xs uppercase tracking-[0.24em] text-[rgba(197,213,232,0.5)]">What happens next</div>
+                <div className="mt-3 space-y-3 text-sm text-[rgba(197,213,232,0.78)]">
+                  {trustPoints.map(({ icon: Icon, label, value }) => (
+                    <div key={label} className="flex items-start gap-3">
+                      <span className="mt-0.5 grid h-9 w-9 place-items-center rounded-2xl border border-[rgba(0,229,255,0.14)] bg-[rgba(0,229,255,0.06)] text-cyan">
+                        <Icon className="h-4 w-4" />
+                      </span>
+                      <div>
+                        <div className="text-gray2">{label}</div>
+                        <div className="mt-1 text-xs text-[rgba(197,213,232,0.62)]">{value}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <div className="mt-8 grid gap-4">
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Field
-            label="Name"
-            value={form.name}
-            onChange={(v) => setForm((s) => ({ ...s, name: v }))}
-            error={errors.name}
-          />
-          <Field
-            label="Email"
-            type="email"
-            value={form.email}
-            onChange={(v) => setForm((s) => ({ ...s, email: v }))}
-            error={errors.email}
-          />
-        </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <TextField
+              label="Your name"
+              value={form.name}
+              onChange={(v) => updateField("name", v)}
+              error={errors.name}
+              placeholder="e.g. Ahmed Khan"
+            />
+            <TextField
+              label="Email address"
+              type="email"
+              value={form.email}
+              onChange={(v) => updateField("email", v)}
+              error={errors.email}
+              placeholder="you@company.com"
+            />
+            <TextField
+              label="Phone number"
+              value={form.phone}
+              onChange={(v) => updateField("phone", v)}
+              error={errors.phone}
+              placeholder="+92 300 1234567"
+            />
+            <TextField
+              label="Company / brand"
+              value={form.company}
+              onChange={(v) => updateField("company", v)}
+              placeholder="Optional"
+            />
+          </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
-          <Field
-            label="Phone"
-            value={form.phone}
-            onChange={(v) => setForm((s) => ({ ...s, phone: v }))}
-            error={errors.phone}
-          />
           <div>
-            <div className="relative">
-              <select
-                value={form.service}
-                onChange={(e) => setForm((s) => ({ ...s, service: e.target.value }))}
-                className={`w-full appearance-none rounded-2xl border bg-[rgba(5,13,31,0.35)] px-4 pb-3 pt-6 text-sm outline-none transition ${
-                  errors.service
-                    ? "border-red-400/60"
-                    : "border-[rgba(0,229,255,0.14)] focus:border-[rgba(0,229,255,0.40)]"
-                }`}
-              >
-                <option value="" disabled>
-                  Select a service
-                </option>
-                {services.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
-              <label className={`pointer-events-none absolute left-4 top-4 text-xs transition ${form.service ? "text-cyan" : "text-[rgba(197,213,232,0.72)]"}`}>
-                Service
-              </label>
+            <div className="mb-3 text-sm font-medium text-gray2">Which service do you need?</div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {services.map((service) => {
+                const selected = form.service === service;
+                return (
+                  <button
+                    key={service}
+                    type="button"
+                    onClick={() => updateField("service", service)}
+                    className={`rounded-2xl border px-4 py-4 text-left text-sm transition ${
+                      selected
+                        ? "border-[rgba(0,229,255,0.38)] bg-[rgba(0,229,255,0.10)] text-white"
+                        : "border-[rgba(0,229,255,0.12)] bg-[rgba(5,13,31,0.35)] text-[rgba(197,213,232,0.76)] hover:border-[rgba(0,229,255,0.26)] hover:text-white"
+                    }`}
+                  >
+                    <span className="flex items-center justify-between gap-3">
+                      <span>{service}</span>
+                      <RiArrowRightUpLine className={`h-4 w-4 ${selected ? "text-cyan" : "text-[rgba(197,213,232,0.42)]"}`} />
+                    </span>
+                  </button>
+                );
+              })}
             </div>
             {errors.service && <div className="mt-2 text-xs text-red-300">{errors.service}</div>}
           </div>
-        </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
           <div>
-            <div className="relative">
-              <select
-                value={form.budget}
-                onChange={(e) => setForm((s) => ({ ...s, budget: e.target.value }))}
-                className={`w-full appearance-none rounded-2xl border bg-[rgba(5,13,31,0.35)] px-4 pb-3 pt-6 text-sm outline-none transition ${
-                  errors.budget
-                    ? "border-red-400/60"
-                    : "border-[rgba(0,229,255,0.14)] focus:border-[rgba(0,229,255,0.40)]"
-                }`}
-              >
-                <option value="" disabled>
-                  Select budget
-                </option>
-                {budgets.map((b) => (
-                  <option key={b} value={b}>
-                    {b}
-                  </option>
-                ))}
-              </select>
-              <label className={`pointer-events-none absolute left-4 top-4 text-xs transition ${form.budget ? "text-cyan" : "text-[rgba(197,213,232,0.72)]"}`}>
-                Budget range
-              </label>
+            <div className="mb-3 text-sm font-medium text-gray2">Estimated budget</div>
+            <div className="flex flex-wrap gap-3">
+              {budgets.map((budget) => {
+                const selected = form.budget === budget;
+                return (
+                  <button
+                    key={budget}
+                    type="button"
+                    onClick={() => updateField("budget", budget)}
+                    className={`rounded-full border px-4 py-2.5 text-sm transition ${
+                      selected
+                        ? "border-[rgba(0,229,255,0.36)] bg-[rgba(0,229,255,0.10)] text-white"
+                        : "border-[rgba(0,229,255,0.12)] bg-[rgba(5,13,31,0.35)] text-[rgba(197,213,232,0.74)] hover:border-[rgba(0,229,255,0.24)] hover:text-white"
+                    }`}
+                  >
+                    {budget}
+                  </button>
+                );
+              })}
             </div>
             {errors.budget && <div className="mt-2 text-xs text-red-300">{errors.budget}</div>}
           </div>
-          <div />
-        </div>
 
-        <div>
-          <div className="relative">
+          <label className="block">
+            <span className="mb-2 block text-sm font-medium text-gray2">Project details</span>
             <textarea
               value={form.message}
-              onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))}
-              className={`min-h-[140px] w-full resize-none rounded-2xl border bg-[rgba(5,13,31,0.35)] px-4 pb-3 pt-6 text-sm outline-none transition ${
+              onChange={(e) => updateField("message", e.target.value)}
+              placeholder="Briefly describe your business, goals, timeline, or any must-have features."
+              className={`min-h-40 w-full resize-none rounded-3xl border bg-[rgba(5,13,31,0.38)] px-4 py-3.5 text-sm text-white outline-none transition placeholder:text-[rgba(197,213,232,0.38)] ${
                 errors.message
-                  ? "border-red-400/60"
-                  : "border-[rgba(0,229,255,0.14)] focus:border-[rgba(0,229,255,0.40)]"
+                  ? "border-red-400/60 focus:border-red-400/60"
+                  : "border-[rgba(0,229,255,0.12)] focus:border-[rgba(0,229,255,0.38)] focus:bg-[rgba(5,13,31,0.52)]"
               }`}
             />
-            <label className={`pointer-events-none absolute left-4 top-4 text-xs transition ${form.message ? "text-cyan" : "text-[rgba(197,213,232,0.72)]"}`}>
-              Message
-            </label>
-          </div>
-          {errors.message && <div className="mt-2 text-xs text-red-300">{errors.message}</div>}
-        </div>
+            {errors.message && <div className="mt-2 text-xs text-red-300">{errors.message}</div>}
+          </label>
 
-        <div className="mt-2">
-          {status === "success" ? (
-            <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(0,229,255,0.18)] bg-[rgba(0,229,255,0.06)] px-4 py-3 text-sm text-gray2">
-              <RiCheckLine className="h-5 w-5 text-cyan" />
-              Message sent! We’ll reach out shortly.
+          <div className="flex flex-col gap-4 rounded-3xl border border-[rgba(0,229,255,0.1)] bg-[rgba(255,255,255,0.02)] p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div className="text-sm text-[rgba(197,213,232,0.74)]">
+              Prefer email or WhatsApp follow-up? Mention it in the project details and we will use that channel first.
             </div>
-          ) : (
-            <MagneticButton
-              variant="primary"
-              onClick={canSubmit ? onSubmit : undefined}
-              className="w-full justify-center"
-            >
-              {status === "loading" ? (
-                <>
-                  <RiLoader4Line className="h-5 w-5 animate-spin" />
-                  Sending…
-                </>
-              ) : (
-                "Send message"
+            <div className="flex items-center gap-3">
+              {status === "success" && (
+                <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(0,229,255,0.18)] bg-[rgba(0,229,255,0.06)] px-4 py-3 text-sm text-gray2">
+                  <RiCheckLine className="h-5 w-5 text-cyan" />
+                  Message sent successfully.
+                </div>
               )}
-            </MagneticButton>
-          )}
-        </div>
+              <button
+                type="submit"
+                disabled={!canSubmit}
+                className="btn btn-primary min-w-[180px] justify-center disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                {status === "loading" ? (
+                  <>
+                    <RiLoader4Line className="h-5 w-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    Send inquiry
+                    <RiArrowRightUpLine className="h-5 w-5" />
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );
 }
-
