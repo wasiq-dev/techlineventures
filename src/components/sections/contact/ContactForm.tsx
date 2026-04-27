@@ -9,11 +9,9 @@ type FormState = {
   phone: string;
   company: string;
   service: string;
-  budget: string;
   message: string;
 };
 
-const budgets = ["< 50k PKR", "50k–150k PKR", "150k–400k PKR", "400k+ PKR"] as const;
 const trustPoints = [
   { icon: RiTimeLine, label: "Fast response", value: "Within 1 business day" },
   { icon: RiShieldCheckLine, label: "Clear process", value: "Scope, timeline, and quote" },
@@ -27,7 +25,6 @@ function validate(v: FormState) {
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email)) e.email = "Enter a valid email";
   if (!v.phone.trim()) e.phone = "Phone is required";
   if (!v.service.trim()) e.service = "Please select a service";
-  if (!v.budget.trim()) e.budget = "Please select a budget range";
   if (!v.message.trim()) e.message = "Message is required";
   return e;
 }
@@ -73,7 +70,6 @@ export function ContactForm({ services }: { services: string[] }) {
     phone: "",
     company: "",
     service: "",
-    budget: "",
     message: "",
   });
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
@@ -96,8 +92,38 @@ export function ContactForm({ services }: { services: string[] }) {
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length) return;
     setStatus("loading");
-    await new Promise((r) => setTimeout(r, 900));
-    setStatus("success");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "ddb0a35d-f858-4397-8d5a-fe7982ceeb2b",
+          subject: `New Inquiry from ${form.name}`,
+          from_name: form.name,
+          to_email: "mwasiqk4@gmail.com",
+          ...form,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to send");
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("idle");
+      alert("Something went wrong. Please try again or contact us directly.");
+    }
   };
 
   return (
@@ -116,7 +142,7 @@ export function ContactForm({ services }: { services: string[] }) {
                   Tell us what you need and we will map the right next step.
                 </div>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[rgba(197,213,232,0.74)]">
-                  Share your goals, selected service, and budget range. We will reply with a practical scope, timeline, and quote.
+                  Share your goals and selected service. We will reply with a practical scope, timeline, and quote.
                 </p>
               </div>
               <div className="min-w-[220px] rounded-3xl border border-[rgba(0,229,255,0.14)] bg-[rgba(255,255,255,0.02)] p-4">
@@ -196,30 +222,6 @@ export function ContactForm({ services }: { services: string[] }) {
             {errors.service && <div className="mt-2 text-xs text-red-300">{errors.service}</div>}
           </div>
 
-          <div>
-            <div className="mb-3 text-sm font-medium text-gray2">Estimated budget</div>
-            <div className="flex flex-wrap gap-3">
-              {budgets.map((budget) => {
-                const selected = form.budget === budget;
-                return (
-                  <button
-                    key={budget}
-                    type="button"
-                    onClick={() => updateField("budget", budget)}
-                    className={`rounded-full border px-4 py-2.5 text-sm transition ${
-                      selected
-                        ? "border-[rgba(0,229,255,0.36)] bg-[rgba(0,229,255,0.10)] text-white"
-                        : "border-[rgba(0,229,255,0.12)] bg-[rgba(5,13,31,0.35)] text-[rgba(197,213,232,0.74)] hover:border-[rgba(0,229,255,0.24)] hover:text-white"
-                    }`}
-                  >
-                    {budget}
-                  </button>
-                );
-              })}
-            </div>
-            {errors.budget && <div className="mt-2 text-xs text-red-300">{errors.budget}</div>}
-          </div>
-
           <label className="block">
             <span className="mb-2 block text-sm font-medium text-gray2">Project details</span>
             <textarea
@@ -235,22 +237,21 @@ export function ContactForm({ services }: { services: string[] }) {
             {errors.message && <div className="mt-2 text-xs text-red-300">{errors.message}</div>}
           </label>
 
-          <div className="flex flex-col gap-4 rounded-3xl border border-[rgba(0,229,255,0.1)] bg-[rgba(255,255,255,0.02)] p-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="text-sm text-[rgba(197,213,232,0.74)]">
-              Prefer email or WhatsApp follow-up? Mention it in the project details and we will use that channel first.
-            </div>
-            <div className="flex items-center gap-3">
-              {status === "success" && (
-                <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(0,229,255,0.18)] bg-[rgba(0,229,255,0.06)] px-4 py-3 text-sm text-gray2">
-                  <RiCheckLine className="h-5 w-5 text-cyan" />
-                  Message sent successfully.
-                </div>
-              )}
-              <button
-                type="submit"
-                disabled={!canSubmit}
-                className="btn btn-primary min-w-[180px] justify-center disabled:cursor-not-allowed disabled:opacity-70"
-              >
+          <p className="text-sm text-[rgba(197,213,232,0.74)]">
+            Prefer email or WhatsApp follow-up? Mention it in the project details and we will use that channel first.
+          </p>
+          <div className="flex items-center justify-end gap-3">
+            {status === "success" && (
+              <div className="flex items-center gap-2 text-sm text-cyan">
+                <RiCheckLine className="h-5 w-5" />
+                Message sent successfully.
+              </div>
+            )}
+            <button
+              type="submit"
+              disabled={!canSubmit}
+              className="btn btn-primary min-w-[180px] justify-center disabled:cursor-not-allowed disabled:opacity-70"
+            >
                 {status === "loading" ? (
                   <>
                     <RiLoader4Line className="h-5 w-5 animate-spin" />
@@ -264,8 +265,7 @@ export function ContactForm({ services }: { services: string[] }) {
                 )}
               </button>
             </div>
-          </div>
-        </form>
+          </form>
       </div>
     </div>
   );
