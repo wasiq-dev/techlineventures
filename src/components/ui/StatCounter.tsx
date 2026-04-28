@@ -21,10 +21,7 @@ export function StatCounter({
 
   useEffect(() => {
     if (!inView) return;
-    if (reduceMotion) {
-      setN(value);
-      return;
-    }
+    if (reduceMotion) return;
     const start = performance.now();
     const from = 0;
     const to = value;
@@ -39,7 +36,7 @@ export function StatCounter({
 
   return (
     <span ref={ref} className={className}>
-      {n}
+      {reduceMotion ? value : n}
       {suffix ?? ""}
     </span>
   );

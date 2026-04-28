@@ -14,9 +14,9 @@ export const metadata: Metadata = buildMetadata({
 
 export default function ContactPage() {
   return (
-    <>
+    <main className="bg-navy">
       <PageHero kicker="Contact" title="Let’s Build Something" subtitle="Tell us what you need — we’ll reply quickly with a clear plan and quote." />
       <ContactPageContent />
-    </>
+    </main>
   );
 }

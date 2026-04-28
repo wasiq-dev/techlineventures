@@ -22,13 +22,22 @@ export function PortfolioPageContent() {
 
   return (
     <>
-      <section className="relative py-16 sm:py-20 lg:py-24 z-10">
-        <div className="container-max container-px">
+      <section className="relative overflow-hidden py-20 lg:py-24 border-y border-[rgba(0,229,255,0.10)]">
+        {/* Light-mode theme background */}
+        <div className="absolute inset-0 pointer-events-none -z-10">
+          <div className="absolute inset-0 bg-linear-to-b from-[#eaf2f6] via-[#dbe8ee] to-[#cfe0e7]" />
+          <div className="absolute -top-24 left-1/2 h-[420px] w-[760px] -translate-x-1/2 rounded-full bg-white/70 blur-[120px]" />
+          <div className="absolute -bottom-32 -left-24 h-[520px] w-[520px] rounded-full bg-cyan/10 blur-[160px]" />
+          <div className="absolute -bottom-40 -right-24 h-[560px] w-[560px] rounded-full bg-cyan/10 blur-[170px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(10,22,40,0.16),transparent_55%)]" />
+        </div>
+
+        <div className="container-max container-px relative z-10">
           <SectionReveal>
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
-                <div className="text-xs tracking-widest text-cyan uppercase">Filter</div>
-                <h2 className="mt-3 text-3xl sm:text-4xl font-[800] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="text-xs tracking-widest text-cyan uppercase font-bold">Filter</div>
+                <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0a1628]" style={{ fontFamily: "var(--font-display)" }}>
                   Explore by category
                 </h2>
               </div>
@@ -40,8 +49,8 @@ export function PortfolioPageContent() {
                     onClick={() => setTab(t)}
                     className={`rounded-full px-4 py-2 text-sm border transition ${
                       tab === t
-                        ? "border-[rgba(0,229,255,0.40)] bg-[rgba(0,229,255,0.10)] text-white"
-                        : "border-[rgba(0,229,255,0.14)] bg-[rgba(0,229,255,0.05)] text-[rgba(197,213,232,0.78)] hover:text-white"
+                        ? "border-cyan bg-cyan/10 text-[#0a1628] font-bold"
+                        : "border-[#0a1628]/10 bg-white/40 text-[#0a1628]/70 hover:text-[#0a1628] hover:border-cyan/30"
                     }`}
                   >
                     {t}
@@ -67,15 +76,20 @@ export function PortfolioPageContent() {
         </div>
       </section>
 
-      <section className="relative py-16 sm:py-20 lg:py-24 z-10">
-        <div className="container-max container-px">
+      <section className="relative py-16 sm:py-20 lg:py-24 z-10 border-y border-[rgba(0,229,255,0.10)] bg-navy overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-[0.3] pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-cyan/5 blur-[120px]" />
+        </div>
+
+        <div className="container-max container-px relative z-10">
           <SectionReveal>
-            <div className="card p-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            <div className="relative overflow-hidden rounded-3xl border border-cyan/10 bg-gradient-to-br from-cyan/[0.02] to-blue-50/[0.02] p-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 backdrop-blur-md shadow-[0_24px_60px_rgba(0,229,255,0.05)]">
               <div>
-                <div className="text-2xl sm:text-3xl font-[800] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white uppercase" style={{ fontFamily: "var(--font-display)" }}>
                   Have a project in mind?
                 </div>
-                <div className="mt-3 muted">Let’s scope it clearly and ship it fast.</div>
+                <div className="mt-3 text-gray2">Let’s scope it clearly and ship it fast.</div>
               </div>
               <MagneticButton href="/contact" variant="primary">
                 Contact us

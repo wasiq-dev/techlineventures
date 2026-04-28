@@ -12,12 +12,12 @@ export function Footer() {
       <div className="container-max container-px py-14">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="relative h-16 w-44 -ml-2">
+            <div className="relative h-20 w-56 -ml-2">
               <Image
                 src="/images/logo.png"
                 alt="TechLine Venture"
                 fill
-                sizes="176px"
+                sizes="224px"
                 className="object-contain object-left"
               />
             </div>

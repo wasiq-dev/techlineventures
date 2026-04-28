@@ -8,15 +8,20 @@ import { fadeUp, staggerChildren } from "@/src/lib/animations";
 export function ProcessSection() {
   const reduceMotion = useReducedMotion();
   return (
-    <section className="relative w-full overflow-hidden bg-[#050d1f] py-24 md:py-32">
-      <div className="container-max container-px">
+    <section className="relative w-full overflow-hidden bg-navy py-24 md:py-32">
+      {/* Background decoration */}
+      <div className="absolute inset-0 opacity-[0.3] pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-cyan/5 blur-[120px]" />
+      </div>
+      
+      <div className="container-max container-px relative z-10">
         <SectionReveal>
           <div>
-            <div className="text-xs tracking-widest text-cyan uppercase">Process</div>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-[800] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+            <div className="text-[10px] font-bold tracking-[0.3em] text-cyan uppercase">Process</div>
+            <h2 className="mt-3 text-3xl sm:text-5xl font-[900] tracking-tighter text-white uppercase">
               Discover → Design → Develop → Deploy
             </h2>
-            <p className="mt-4 muted max-w-2xl">
+            <p className="mt-4 text-gray2 max-w-2xl">
               A simple, transparent workflow that keeps quality high and delivery fast.
             </p>
           </div>
@@ -47,21 +52,19 @@ export function ProcessSection() {
               <motion.div 
                 key={s.title} 
                 variants={fadeUp} 
-                className="group relative overflow-hidden rounded-[28px] border border-[rgba(0,229,255,0.12)] bg-[rgba(255,255,255,0.02)] p-8 transition-all duration-300 hover:border-cyan/40 hover:bg-[rgba(0,229,255,0.04)] hover:shadow-[0_0_30px_rgba(0,229,255,0.1)]"
+                className="group relative overflow-hidden rounded-xl border border-cyan/10 bg-gradient-to-br from-cyan/[0.02] to-blue-50/[0.02] p-8 transition-all duration-300 hover:border-cyan/40 hover:bg-cyan/[0.04] hover:shadow-[0_10px_30px_rgba(0,229,255,0.15)] hover:-translate-y-0.5"
               >
-                <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,rgba(0,229,255,0.08),transparent_50%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                
                 <div className="flex items-center justify-between">
-                  <div className="text-cyan text-sm font-bold tracking-widest">{String(idx + 1).padStart(2, "0")}</div>
+                  <div className="text-cyan text-[10px] font-bold tracking-widest">{String(idx + 1).padStart(2, "0")}</div>
                   <div className="h-2 w-2 rounded-full bg-cyan/20 transition-all duration-300 group-hover:bg-cyan group-hover:shadow-[0_0_10px_rgba(0,229,255,0.8)]" />
                 </div>
                 
-                <div className="mt-6 text-xl font-[800] tracking-tight text-white transition-colors group-hover:text-cyan" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="mt-6 text-xl font-[900] tracking-tight text-white transition-colors group-hover:text-cyan uppercase">
                   {s.title}
                 </div>
-                <div className="mt-3 text-sm leading-relaxed text-[rgba(197,213,232,0.7)] transition-colors group-hover:text-[rgba(197,213,232,0.9)]">{s.description}</div>
+                <div className="mt-3 text-sm leading-relaxed text-gray2 transition-colors group-hover:text-white">{s.description}</div>
                 
-                <div className="mt-6 h-[2px] w-0 bg-cyan transition-all duration-500 group-hover:w-full" />
+                <div className="mt-6 h-[1px] w-0 bg-cyan transition-all duration-500 group-hover:w-full" />
               </motion.div>
             ))}
           </motion.div>

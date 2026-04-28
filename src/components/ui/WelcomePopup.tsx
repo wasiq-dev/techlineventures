@@ -70,7 +70,7 @@ export function WelcomePopup() {
     }, 800);
   };
 
-  const sendEmailSummary = async (currentMessages: any[]) => {
+  const sendEmailSummary = async (currentMessages: Array<{ text: string; isBot: boolean }>) => {
     try {
       await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -79,7 +79,7 @@ export function WelcomePopup() {
           access_key: "ddb0a35d-f858-4397-8d5a-fe7982ceeb2b",
           subject: "New Chat Lead from TechLine Website",
           from_name: "TechLine Chatbot",
-          to_email: "mwasiqk4@gmail.com",
+          to_email: "info@techlineventure.com",
           message: `Full Chat History:\n\n${currentMessages.map(m => (m.isBot ? "Bot: " : "User: ") + m.text).join("\n")}`,
         }),
       });

@@ -50,42 +50,41 @@ export function Testimonials() {
   const goToNext = () => setActive((prev) => (prev + 1) % testimonials.length);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#050d1f] py-20 sm:py-24 md:py-32">
-      <div className="absolute inset-x-0 top-10 h-72 bg-[radial-gradient(circle_at_center,rgba(0,229,255,0.14),transparent_65%)]" />
-      <div className="container-max container-px">
+    <section id="testimonials" className="relative w-full overflow-hidden py-24 md:py-32">
+      {/* Light-mode theme background */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="absolute inset-0 bg-linear-to-b from-[#eaf2f6] via-[#dbe8ee] to-[#cfe0e7]" />
+        <div className="absolute -top-24 left-1/2 h-[420px] w-[760px] -translate-x-1/2 rounded-full bg-white/70 blur-[120px]" />
+        <div className="absolute -bottom-32 -left-24 h-[520px] w-[520px] rounded-full bg-cyan/10 blur-[160px]" />
+        <div className="absolute -bottom-40 -right-24 h-[560px] w-[560px] rounded-full bg-cyan/10 blur-[170px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(10,22,40,0.16),transparent_55%)]" />
+      </div>
+
+      <div className="container-max container-px relative z-10">
         <SectionReveal>
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <div className="text-xs tracking-[0.28em] text-cyan uppercase">Client Reviews</div>
-              <h2 className="mt-3 text-2xl sm:text-4xl font-[800] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-                Feedback that makes the whole brand feel more trustworthy.
+            <div>
+              <div className="flex items-center gap-3">
+                <div className="h-px w-8 bg-cyan/30" />
+                <div className="text-[10px] font-bold tracking-[0.3em] text-cyan uppercase">Social Proof</div>
+              </div>
+              <h2 className="mt-4 text-4xl font-black tracking-tighter text-[#0a1628] sm:text-6xl uppercase">
+                Client <span className="text-cyan">Trust</span>
               </h2>
-              <p className="mt-4 max-w-xl text-sm leading-relaxed text-[rgba(197,213,232,0.74)] sm:text-base">
-                Real clients, real outcomes, and a layout that feels cleaner on both desktop and mobile.
-              </p>
             </div>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-              {trustHighlights.map(({ icon: Icon, label, value }) => (
-                <div
-                  key={label}
-                  className="group relative rounded-2xl border border-[rgba(0,229,255,0.12)] bg-[rgba(255,255,255,0.03)] px-4 py-4 backdrop-blur-sm transition-all duration-300 hover:border-cyan/40 hover:bg-[rgba(0,229,255,0.06)] hover:shadow-[0_0_20px_rgba(0,229,255,0.1)]"
-                >
-                  <div className="absolute inset-0 -z-10 rounded-2xl bg-cyan/0 transition-colors duration-500 group-hover:bg-cyan/[0.02]" />
-                  <div className="flex items-center gap-2 text-cyan transition-transform duration-300 group-hover:translate-x-1">
-                    <Icon className="h-4 w-4" />
-                    <span className="text-[11px] uppercase tracking-[0.22em] text-[rgba(197,213,232,0.56)] group-hover:text-[rgba(197,213,232,0.8)]">{label}</span>
-                  </div>
-                  <div className="mt-3 text-sm font-medium text-white group-hover:text-cyan transition-colors">{value}</div>
-                </div>
-              ))}
+            <div className="flex items-center gap-4">
+              <div className="h-12 w-12 rounded-full border border-cyan/20 bg-linear-to-br from-cyan/10 to-cyan/5 grid place-items-center">
+                <RiDoubleQuotesL className="h-6 w-6 text-cyan" />
+              </div>
+              <div className="text-sm font-bold text-[#0a1628] uppercase tracking-widest">Global Reviews</div>
             </div>
           </div>
         </SectionReveal>
 
         <div className="relative mt-10 grid gap-5 lg:mt-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)] lg:items-stretch">
-          <div className="card relative overflow-hidden rounded-[28px] p-0">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,229,255,0.16),transparent_46%)]" />
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(180deg,rgba(5,13,31,0),rgba(5,13,31,0.14))]" />
+          <div className="relative overflow-hidden rounded-sm border border-[#0a1628]/10 bg-white/40 p-0 backdrop-blur-md shadow-[0_24px_60px_rgba(0,0,0,0.06)]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(0,229,255,0.08),transparent_46%)]" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,0.3))]" />
             <div className="relative min-h-[320px] sm:min-h-[360px]">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
@@ -99,55 +98,57 @@ export function Testimonials() {
                   <div>
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <div className="inline-flex items-center gap-1 rounded-full border border-[rgba(0,229,255,0.16)] bg-[rgba(0,229,255,0.08)] px-3 py-2 text-cyan">
-                          {Array.from({ length: activeTestimonial.rating }).map((_, i) => (
-                            <RiStarFill key={i} className="h-4 w-4" />
+                        <div className="flex items-center gap-1.5">
+                          {[...Array(5)].map((_, i) => (
+                            <RiStarFill key={i} className="h-3 w-3 text-cyan" />
                           ))}
                         </div>
-                        <div className="mt-4 text-[11px] uppercase tracking-[0.24em] text-[rgba(197,213,232,0.52)]">
-                          Highlighted review
+                        <div className="mt-3 text-lg font-black leading-tight text-[#0a1628] sm:text-2xl uppercase">
+                          {activeTestimonial.title}
                         </div>
                       </div>
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl border border-[rgba(0,229,255,0.16)] bg-[rgba(0,229,255,0.06)] text-cyan sm:h-12 sm:w-12">
-                        <RiDoubleQuotesL className="h-5 w-5 sm:h-6 sm:w-6" />
+                      <div className="flex -space-x-2">
+                        {testimonials.map((t, i) => (
+                          <div
+                            key={t.id}
+                            className={`h-8 w-8 rounded-full border-2 border-white bg-white/50 transition-all ${
+                              active === i ? "z-10 scale-110 border-cyan shadow-[0_0_15px_rgba(0,229,255,0.4)]" : "opacity-40"
+                            }`}
+                          />
+                        ))}
                       </div>
                     </div>
 
-                    <p className="mt-6 max-w-3xl text-lg leading-8 text-gray2 sm:mt-8 sm:text-[26px] sm:leading-[1.6]">
-                      "{activeTestimonial.quote}"
+                    <p className="mt-6 text-base leading-relaxed text-[#0a1628]/80 sm:text-lg">
+                      &ldquo;{activeTestimonial.quote}&rdquo;
                     </p>
-
-                    <div className="mt-6 flex flex-wrap gap-2 sm:mt-8">
-                      {reviewTags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full border border-[rgba(0,229,255,0.14)] bg-[rgba(255,255,255,0.04)] px-3 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[rgba(197,213,232,0.62)]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
 
-                  <div className="mt-8 flex flex-col gap-5 border-t border-[rgba(255,255,255,0.08)] pt-5 sm:mt-10 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                      <div className="text-lg font-semibold text-white">{activeTestimonial.name}</div>
-                      <div className="mt-1 text-sm text-[rgba(197,213,232,0.68)]">{activeTestimonial.title}</div>
+                  <div className="mt-8 flex flex-wrap items-center justify-between gap-6 border-t border-[#0a1628]/10 pt-6">
+                    <div className="flex items-center gap-4">
+                      <div className="h-12 w-12 rounded-full border border-[#0a1628]/10 bg-white/60 p-1">
+                        <div className="h-full w-full rounded-full bg-[#0a1628]/5" />
+                      </div>
+                      <div>
+                        <div className="text-sm font-black text-[#0a1628] uppercase">{activeTestimonial.name}</div>
+                        <div className="text-[10px] font-bold tracking-widest text-[#0a1628]/50 uppercase">
+                          {activeTestimonial.title}
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex items-center gap-2 self-start sm:self-auto">
+
+                    <div className="flex gap-2">
                       <button
-                        type="button"
-                        aria-label="Previous testimonial"
                         onClick={goToPrev}
-                        className="grid h-11 w-11 place-items-center rounded-full border border-[rgba(0,229,255,0.16)] bg-[rgba(255,255,255,0.04)] text-[rgba(197,213,232,0.72)] transition hover:border-[rgba(0,229,255,0.28)] hover:text-white"
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-[#0a1628]/10 bg-white/60 text-[#0a1628] backdrop-blur-md transition hover:bg-white/80"
+                        aria-label="Previous testimonial"
                       >
                         <RiArrowLeftSLine className="h-5 w-5" />
                       </button>
                       <button
-                        type="button"
-                        aria-label="Next testimonial"
                         onClick={goToNext}
-                        className="grid h-11 w-11 place-items-center rounded-full border border-[rgba(0,229,255,0.16)] bg-[rgba(0,229,255,0.08)] text-cyan transition hover:border-[rgba(0,229,255,0.28)] hover:bg-[rgba(0,229,255,0.12)]"
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-[#0a1628]/10 bg-white/60 text-[#0a1628] backdrop-blur-md transition hover:bg-white/80"
+                        aria-label="Next testimonial"
                       >
                         <RiArrowRightSLine className="h-5 w-5" />
                       </button>
@@ -158,98 +159,39 @@ export function Testimonials() {
             </div>
           </div>
 
-          <div className="grid gap-3 sm:gap-4">
-            {testimonials.map((item, idx) => {
-              const isActive = idx === active;
-              const initials = item.name
-                .split(" ")
-                .map((part) => part[0])
-                .join("")
-                .slice(0, 2);
-
-              return (
-                <button
-                  key={item.name}
-                  type="button"
-                  aria-label={`Go to testimonial ${idx + 1}`}
-                  className={`group rounded-[24px] border p-4 text-left transition sm:p-5 ${
-                    isActive
-                      ? "border-[rgba(0,229,255,0.28)] bg-[linear-gradient(180deg,rgba(0,229,255,0.09),rgba(255,255,255,0.04))]"
-                      : "border-[rgba(0,229,255,0.12)] bg-[rgba(255,255,255,0.03)] hover:border-[rgba(0,229,255,0.22)] hover:bg-[rgba(255,255,255,0.05)]"
-                  }`}
-                  onClick={() => setActive(idx)}
-                >
-                  <div className="flex items-start gap-3">
-                    <div
-                      className={`grid h-11 w-11 shrink-0 place-items-center rounded-2xl border text-sm font-semibold ${
-                        isActive
-                          ? "border-[rgba(0,229,255,0.28)] bg-[rgba(0,229,255,0.12)] text-cyan"
-                          : "border-[rgba(255,255,255,0.08)] bg-[rgba(255,255,255,0.04)] text-[rgba(197,213,232,0.84)]"
-                      }`}
-                    >
-                      {initials}
+          <div className="flex flex-col gap-5">
+            <div className="flex-1 rounded-sm border border-[#0a1628]/10 bg-white/40 p-6 backdrop-blur-md shadow-[0_24px_60px_rgba(0,0,0,0.06)]">
+              <div className="text-[10px] font-bold tracking-[0.2em] text-cyan uppercase">Project Stats</div>
+              <div className="mt-6 space-y-5">
+                {trustHighlights.map((h) => (
+                  <div key={h.label} className="flex items-start gap-4">
+                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-sm border border-cyan/20 bg-cyan/5 text-cyan">
+                      <h.icon className="h-4 w-4" />
                     </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="min-w-0">
-                          <div className={`truncate text-sm font-semibold sm:text-base ${isActive ? "text-white" : "text-[rgba(197,213,232,0.9)]"}`}>
-                            {item.name}
-                          </div>
-                          <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-[rgba(197,213,232,0.46)]">
-                            {item.title}
-                          </div>
-                        </div>
-                        <div className="flex shrink-0 items-center gap-1 text-cyan">
-                          {Array.from({ length: item.rating }).map((_, i) => (
-                            <RiStarFill key={i} className="h-3.5 w-3.5" />
-                          ))}
-                        </div>
-                      </div>
-
-                      <p className="mt-3 line-clamp-3 text-sm leading-6 text-[rgba(197,213,232,0.72)]">
-                        {item.quote}
-                      </p>
-
-                      <div className="mt-4 flex items-center gap-2">
-                        <span
-                          className={`h-2.5 w-2.5 rounded-full ${
-                            isActive ? "bg-cyan shadow-[0_0_16px_rgba(0,229,255,0.7)]" : "bg-[rgba(197,213,232,0.2)]"
-                          }`}
-                        />
-                        <span className={`text-xs ${isActive ? "text-cyan" : "text-[rgba(197,213,232,0.45)]"}`}>
-                          {isActive ? "Currently highlighted" : "Tap to preview"}
-                        </span>
+                    <div>
+                      <div className="text-sm font-black text-[#0a1628] uppercase">{h.value}</div>
+                      <div className="text-[10px] font-bold tracking-widest text-[#0a1628]/50 uppercase">
+                        {h.label}
                       </div>
                     </div>
                   </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+                ))}
+              </div>
+            </div>
 
-        <div className="mt-6 flex items-center justify-center gap-2 lg:hidden">
-          {testimonials.map((item, idx) => (
-            <button
-              key={item.name}
-              type="button"
-              aria-label={`Switch to ${item.name} review`}
-              onClick={() => setActive(idx)}
-              className={`h-2.5 rounded-full transition ${
-                idx === active ? "w-8 bg-cyan" : "w-2.5 bg-[rgba(197,213,232,0.22)]"
-              }`}
-            />
-          ))}
-        </div>
-
-        <div className="mt-8 flex items-center justify-between rounded-[24px] border border-[rgba(0,229,255,0.12)] bg-[rgba(255,255,255,0.03)] px-4 py-4 sm:px-5 lg:hidden">
-          <div>
-            <div className="text-[11px] uppercase tracking-[0.22em] text-[rgba(197,213,232,0.48)]">Trusted in</div>
-            <div className="mt-2 text-sm font-medium text-white">{company.cityBadge}</div>
-          </div>
-          <div className="text-right">
-            <div className="text-[11px] uppercase tracking-[0.22em] text-[rgba(197,213,232,0.48)]">Client rating</div>
-            <div className="mt-2 text-sm font-medium text-cyan">5.0 / 5</div>
+            <div className="rounded-sm border border-[#0a1628]/10 bg-white/40 p-6 backdrop-blur-md shadow-[0_24px_60px_rgba(0,0,0,0.06)]">
+              <div className="text-[10px] font-bold tracking-widest text-cyan uppercase">Service Focus</div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {reviewTags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-[#0a1628]/10 bg-white/60 px-3 py-1 text-[10px] font-bold text-[#0a1628]/70 uppercase tracking-widest"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { RiMenu3Line, RiCloseLine, RiArrowDownSLine } from "react-icons/ri";
 
-import { company, services } from "@/src/lib/data";
+import { services } from "@/src/lib/data";
 import { MagneticButton } from "@/src/components/ui/MagneticButton";
 
 type NavItem = { href: string; label: string };
@@ -47,6 +47,7 @@ export function Navbar() {
   const [indicator, setIndicator] = useState({ left: 0, width: 0 });
   const navRef = useRef<HTMLElement>(null);
   const isHomePage = pathname === "/";
+  const mobileServicesOpenEffective = open ? mobileServicesOpen : false;
 
   const activeHref = useMemo(() => {
     // Check main nav items first (excluding Home)
@@ -118,10 +119,6 @@ export function Navbar() {
   }, [open]);
 
   useEffect(() => {
-    if (!open) setMobileServicesOpen(false);
-  }, [open]);
-
-  useEffect(() => {
     const { body } = document;
     const previousOverflow = body.style.overflow;
     if (open) body.style.overflow = "hidden";
@@ -135,10 +132,10 @@ export function Navbar() {
       <header className="fixed top-0 left-0 right-0 z-50">
         <div className={scrolled || !isHomePage ? "glass-nav" : "bg-transparent"}>
           <div className="container-max container-px">
-            <div className="h-[76px] flex items-center justify-between">
+            <div className="h-[88px] flex items-center justify-between">
               <Link href="/" className="flex items-center group">
                 <motion.div 
-                  className="relative h-12 w-32"
+                  className="relative h-20 w-52"
                   whileHover={reduceMotion ? undefined : { scale: 1.05 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
                 >
@@ -146,7 +143,7 @@ export function Navbar() {
                     src="/images/logo.png"
                     alt="TechLine Venture"
                     fill
-                    sizes="128px"
+                    sizes="208px"
                     className="object-contain"
                     priority
                   />
@@ -295,11 +292,11 @@ export function Navbar() {
                           >
                             <span>Services</span>
                             <RiArrowDownSLine
-                              className={`h-8 w-8 transition-transform ${mobileServicesOpen ? "rotate-180" : ""}`}
+                              className={`h-8 w-8 transition-transform ${mobileServicesOpenEffective ? "rotate-180" : ""}`}
                             />
                           </button>
                           <AnimatePresence initial={false}>
-                            {mobileServicesOpen && (
+                            {mobileServicesOpenEffective && (
                               <motion.div
                                 initial={reduceMotion ? false : { opacity: 0, height: 0 }}
                                 animate={reduceMotion ? undefined : { opacity: 1, height: "auto" }}

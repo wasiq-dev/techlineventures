@@ -14,6 +14,7 @@ export type Service = {
   description: string;
   details: string[];
   icon: string;
+  category: string;
 };
 
 export type ServicePageContent = {
@@ -35,6 +36,7 @@ export const services: Service[] = [
     description: "Fast, beautiful websites built to convert.",
     details: ["Next.js & modern stacks", "SEO-ready structure", "Performance tuning"],
     icon: "RiCodeSSlashLine",
+    category: "DIGITAL SERVICES",
   },
   {
     id: "mobile",
@@ -42,6 +44,7 @@ export const services: Service[] = [
     description: "Native & cross-platform apps users love.",
     details: ["React Native solutions", "Clean UX flows", "App store readiness"],
     icon: "RiSmartphoneLine",
+    category: "DIGITAL SERVICES",
   },
   {
     id: "ecommerce",
@@ -49,6 +52,7 @@ export const services: Service[] = [
     description: "Stores built to sell, 24/7.",
     details: ["Product & checkout flows", "Payment integrations", "Analytics & tracking"],
     icon: "RiShoppingCart2Line",
+    category: "DIGITAL SERVICES",
   },
   {
     id: "uiux",
@@ -56,6 +60,7 @@ export const services: Service[] = [
     description: "Pixel-perfect, user-first interfaces.",
     details: ["Wireframes & prototypes", "Design systems", "Usability iterations"],
     icon: "RiLayout4Line",
+    category: "DIGITAL SERVICES",
   },
   {
     id: "software",
@@ -63,6 +68,7 @@ export const services: Service[] = [
     description: "ERP, CRM & business tools, built for you.",
     details: ["Role-based systems", "Dashboards & automation", "Scalable architecture"],
     icon: "RiCpuLine",
+    category: "DIGITAL SERVICES",
   },
   {
     id: "marketing",
@@ -70,6 +76,7 @@ export const services: Service[] = [
     description: "Growth campaigns that deliver real ROI.",
     details: ["SEO audits & content", "Conversion optimization", "Reporting dashboards"],
     icon: "RiLineChartLine",
+    category: "DIGITAL SERVICES",
   },
   {
     id: "branding",
@@ -77,6 +84,7 @@ export const services: Service[] = [
     description: "Identities that make you unforgettable.",
     details: ["Logo & brand kit", "Social creatives", "Pitch decks & print"],
     icon: "RiBrushLine",
+    category: "DIGITAL SERVICES",
   },
   {
     id: "api",
@@ -84,6 +92,7 @@ export const services: Service[] = [
     description: "Connect everything. Break silos.",
     details: ["3rd-party integrations", "Automation workflows", "Secure API design"],
     icon: "RiPlug2Line",
+    category: "EMERGING TECHNOLOGIES",
   },
   {
     id: "maintenance",
@@ -91,6 +100,7 @@ export const services: Service[] = [
     description: "Keep your systems running smoothly 24/7.",
     details: ["Bug fixes & updates", "Performance monitoring", "Security patches"],
     icon: "RiToolsLine",
+    category: "INDUSTRY PLANS",
   },
 ];
 
@@ -470,6 +480,7 @@ export const portfolio: PortfolioItem[] = [
 
 export const testimonials = [
   {
+    id: "t1",
     name: "Ahmed Khan",
     title: "CEO, RetailFirst PK",
     rating: 5,
@@ -477,6 +488,7 @@ export const testimonials = [
       "TechLine Venture delivered a premium website that loads fast and looks incredible. Communication was clear, timelines were tight, and results were real.",
   },
   {
+    id: "t2",
     name: "Sara Raza",
     title: "Operations Director, TradePro",
     rating: 5,
@@ -484,6 +496,7 @@ export const testimonials = [
       "From UI/UX to deployment, they handled everything end-to-end. Our internal portal is smoother, faster, and much easier for the team to use.",
   },
   {
+    id: "t3",
     name: "Omar Mirza",
     title: "Founder, Studio Mirza",
     rating: 5,

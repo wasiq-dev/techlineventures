@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Space_Grotesk } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
 import { Navbar } from "@/src/components/layout/Navbar";
@@ -8,20 +8,14 @@ import { CursorGlow } from "@/src/components/ui/CursorGlow";
 import { LenisProvider } from "@/src/components/ui/LenisProvider";
 import { PageTransition } from "@/src/components/ui/PageTransition";
 import { WelcomePopup } from "@/src/components/ui/WelcomePopup";
+import { LoadingScreen } from "@/src/components/ui/LoadingScreen";
 import { company } from "@/src/lib/data";
 import { defaultOgImage, siteDescription, siteName, siteUrl } from "@/src/lib/seo";
 
-const display = Space_Grotesk({
+const robotoMono = Roboto_Mono({
   subsets: ["latin"],
-  weight: ["600", "700"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const sans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-roboto-mono",
   display: "swap",
 });
 
@@ -127,7 +121,7 @@ const websiteJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${robotoMono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-screen overflow-x-hidden bg-[#050d1f] isolate">
         <script
           type="application/ld+json"
@@ -138,6 +132,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <CursorGlow />
+        <LoadingScreen />
         <div className="relative flex min-h-screen flex-col">
           <LenisProvider>
             <Navbar />
