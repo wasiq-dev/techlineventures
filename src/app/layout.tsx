@@ -89,7 +89,6 @@ const organizationJsonLd = {
   logo: `${siteUrl}${defaultOgImage}`,
   description: siteDescription,
   email: company.email,
-  telephone: company.phone,
   address: {
     "@type": "PostalAddress",
     streetAddress: company.address,
@@ -101,7 +100,6 @@ const organizationJsonLd = {
       "@type": "ContactPoint",
       contactType: "sales",
       email: company.email,
-      telephone: company.phone,
       availableLanguage: ["English", "Urdu"],
     },
   ],
