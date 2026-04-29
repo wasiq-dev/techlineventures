@@ -18,7 +18,7 @@ export function ProcessSection() {
         <SectionReveal>
           <div>
             <div className="text-[10px] font-bold tracking-[0.3em] text-cyan uppercase">Process</div>
-            <h2 className="mt-3 text-3xl sm:text-5xl font-[900] tracking-tighter text-white uppercase">
+            <h2 className="mt-3 text-3xl sm:text-5xl font-[900] tracking-tighter text-white uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
               Discover → Design → Develop → Deploy
             </h2>
             <p className="mt-4 text-gray2 max-w-2xl">
@@ -59,7 +59,7 @@ export function ProcessSection() {
                   <div className="h-2 w-2 rounded-full bg-cyan/20 transition-all duration-300 group-hover:bg-cyan group-hover:shadow-[0_0_10px_rgba(0,229,255,0.8)]" />
                 </div>
                 
-                <div className="mt-6 text-xl font-[900] tracking-tight text-white transition-colors group-hover:text-cyan uppercase">
+                <div className="mt-6 text-xl font-[900] tracking-tight text-white transition-colors group-hover:text-cyan uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   {s.title}
                 </div>
                 <div className="mt-3 text-sm leading-relaxed text-gray2 transition-colors group-hover:text-white">{s.description}</div>

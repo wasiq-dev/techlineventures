@@ -37,7 +37,7 @@ export function PortfolioPageContent() {
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
                 <div className="text-xs tracking-widest text-cyan uppercase font-bold">Filter</div>
-                <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0a1628]" style={{ fontFamily: "var(--font-display)" }}>
+                <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0a1628]" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   Explore by category
                 </h2>
               </div>
@@ -86,7 +86,7 @@ export function PortfolioPageContent() {
           <SectionReveal>
             <div className="relative overflow-hidden rounded-3xl border border-cyan/10 bg-gradient-to-br from-cyan/[0.02] to-blue-50/[0.02] p-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 backdrop-blur-md shadow-[0_24px_60px_rgba(0,229,255,0.05)]">
               <div>
-                <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white uppercase" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   Have a project in mind?
                 </div>
                 <div className="mt-3 text-gray2">Let’s scope it clearly and ship it fast.</div>

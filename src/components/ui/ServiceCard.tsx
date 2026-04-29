@@ -88,7 +88,7 @@ export function ServiceCard({
           </div>
 
           {/* Title */}
-          <h3 className="mt-6 text-xl font-extrabold tracking-tight text-white uppercase transition-colors group-hover:text-cyan" style={{ fontFamily: "var(--font-display)" }}>
+          <h3 className="mt-6 text-xl font-extrabold tracking-tight text-white uppercase transition-colors group-hover:text-cyan" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
             {service.title}
           </h3>
 

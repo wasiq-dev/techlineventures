@@ -62,7 +62,7 @@ export function ServicesSection() {
             <div className="h-px w-12 bg-cyan/40" />
             <div className="text-[10px] font-bold tracking-[0.3em] text-cyan uppercase">Expertise & Solutions</div>
           </div>
-          <h2 className="mt-6 text-4xl font-black tracking-tighter text-[#0a1628] sm:text-6xl uppercase">
+          <h2 className="mt-6 text-4xl font-black tracking-tighter text-[#0a1628] sm:text-6xl uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
             Our <span className="text-cyan">Services</span>
           </h2>
         </div>

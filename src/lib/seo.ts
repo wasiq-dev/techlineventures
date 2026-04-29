@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 
 import { company, servicePageContent, services } from "@/src/lib/data";
 
-export const siteName = "TechLine Venture";
+export const siteName = "Techline Venture";
 export const siteUrl = "https://techlineventure.com";
 export const siteDescription =
-  "TechLine Venture builds premium websites, mobile apps, e-commerce platforms, custom software, UI/UX systems, and digital growth solutions for modern businesses.";
+  "Techline Venture builds premium websites, mobile apps, e-commerce platforms, custom software, UI/UX systems, and digital growth solutions for modern businesses.";
 export const defaultOgImage = "/images/logo.png";
 
 const defaultKeywords = [
-  "TechLine Venture",
+  "Techline Venture",
   "software company",
   "website development",
   "mobile app development",

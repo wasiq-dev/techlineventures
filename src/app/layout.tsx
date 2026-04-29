@@ -22,13 +22,13 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   title: {
     default: siteName,
-    template: "%s | TechLine Venture",
+    template: "%s | Techline Venture",
   },
   description: siteDescription,
   metadataBase: new URL(siteUrl),
   applicationName: siteName,
   keywords: [
-    "TechLine Venture",
+    "Techline Venture",
     "software house Pakistan",
     "web development company Karachi",
     "mobile app development company",

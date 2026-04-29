@@ -42,7 +42,7 @@ export function WelcomePopup() {
     let botResponse = "";
 
     if (userMsg.includes("hello") || userMsg.includes("hi") || userMsg.includes("hey") || userMsg.includes("asalam")) {
-      botResponse = "Hello! 👋 Welcome to TechLine Venture. How can we help you build your next big idea?";
+      botResponse = "Hello! 👋 Welcome to Techline Venture. How can we help you build your next big idea?";
     } else if (userMsg.includes("website") || userMsg.includes("web development")) {
       botResponse = "We specialize in high-performance websites using Next.js. We offer corporate sites, landing pages, and complex web apps. Would you like to see our portfolio or get a quote?";
     } else if (userMsg.includes("app") || userMsg.includes("mobile")) {
@@ -50,7 +50,7 @@ export function WelcomePopup() {
     } else if (userMsg.includes("price") || userMsg.includes("cost") || userMsg.includes("budget") || userMsg.includes("rate")) {
       botResponse = "Our pricing depends on the project scope. Generally, basic websites start from 50k PKR. For an exact quote, please share your requirements.";
     } else if (userMsg.includes("contact") || userMsg.includes("phone") || userMsg.includes("call") || userMsg.includes("whatsapp")) {
-      botResponse = "You can call or WhatsApp us at 0322 3509162, or email us at info@techlineventure.com.";
+      botResponse = "You can email us at info@techlineventure.com or use our contact form to get in touch.";
     } else if (userMsg.includes("address") || userMsg.includes("location") || userMsg.includes("office")) {
       botResponse = "Our office is located at Suite #B3, 2nd Floor, Haryani Centre, Zamzama, Phase-V, DHA, Karachi.";
     } else if (userMsg.includes("service") || userMsg.includes("what you do")) {
@@ -77,8 +77,8 @@ export function WelcomePopup() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: "ddb0a35d-f858-4397-8d5a-fe7982ceeb2b",
-          subject: "New Chat Lead from TechLine Website",
-          from_name: "TechLine Chatbot",
+          subject: "New Chat Lead from Techline Website",
+          from_name: "Techline Chatbot",
           to_email: "info@techlineventure.com",
           message: `Full Chat History:\n\n${currentMessages.map(m => (m.isBot ? "Bot: " : "User: ") + m.text).join("\n")}`,
         }),
@@ -122,7 +122,7 @@ export function WelcomePopup() {
                   <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[#0d1b2f] bg-green-500" />
                 </div>
                 <div>
-                  <div className="text-sm font-bold text-white">TechLine Support</div>
+                  <div className="text-sm font-bold text-white">Techline Support</div>
                   <div className="text-[10px] text-cyan uppercase tracking-wider font-medium">Online now</div>
                 </div>
               </div>

@@ -141,7 +141,7 @@ export function Navbar() {
                 >
                   <Image
                     src="/images/logo.png"
-                    alt="TechLine Venture"
+                    alt="Techline Venture"
                     fill
                     sizes="208px"
                     className="object-contain"

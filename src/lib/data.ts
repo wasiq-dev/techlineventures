@@ -1,7 +1,6 @@
 export const company = {
-  name: "TechLine Venture",
+  name: "Techline Venture",
   tagline: "Building Smart Tech for Modern Businesses",
-  phone: "0322 3509162",
   email: "info@techlineventure.com",
   address:
     "Suite #B3, 2nd Floor, Haryani Centre, Plot #21-E, Zamzama Lane-4, Zamzama Commercial, Phase-V, DHA, Karachi 75500",
@@ -485,7 +484,7 @@ export const testimonials = [
     title: "CEO, RetailFirst PK",
     rating: 5,
     quote:
-      "TechLine Venture delivered a premium website that loads fast and looks incredible. Communication was clear, timelines were tight, and results were real.",
+      "Techline Venture delivered a premium website that loads fast and looks incredible. Communication was clear, timelines were tight, and results were real.",
   },
   {
     id: "t2",

@@ -7,7 +7,7 @@ import { buildMetadata } from "@/src/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Contact",
   description:
-    "Contact TechLine Venture to discuss websites, mobile apps, software systems, branding, SEO, or ongoing support. Get a clear scope, timeline, and quote.",
+    "Contact Techline Venture to discuss websites, mobile apps, software systems, branding, SEO, or ongoing support. Get a clear scope, timeline, and quote.",
   path: "/contact",
   keywords: ["contact software company", "get website development quote", "Karachi software agency contact"],
 });

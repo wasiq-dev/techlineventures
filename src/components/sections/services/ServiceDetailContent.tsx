@@ -32,7 +32,7 @@ export function ServiceDetailContent({ serviceId }: { serviceId: Service["id"] }
                 <div className="text-xs tracking-widest text-cyan uppercase font-bold">Overview</div>
                 <h2
                   className="mt-3 text-3xl sm:text-4xl font-[800] tracking-tight text-[#0a1628] uppercase"
-                  style={{ fontFamily: "var(--font-display)" }}
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
                 >
                   Built around business goals, not generic templates.
                 </h2>
@@ -77,7 +77,7 @@ export function ServiceDetailContent({ serviceId }: { serviceId: Service["id"] }
                 <div className="text-xs tracking-widest text-cyan uppercase font-bold">What You Get</div>
                 <div
                   className="mt-3 text-2xl font-[800] tracking-tight text-[#0a1628] uppercase"
-                  style={{ fontFamily: "var(--font-display)" }}
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
                 >
                   Clear deliverables from day one.
                 </div>
@@ -110,7 +110,7 @@ export function ServiceDetailContent({ serviceId }: { serviceId: Service["id"] }
                 <div className="text-xs tracking-widest text-cyan uppercase font-bold">Expected Impact</div>
                 <div
                   className="mt-3 text-2xl font-[800] tracking-tight text-white uppercase"
-                  style={{ fontFamily: "var(--font-display)" }}
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
                 >
                   Outcomes that support growth.
                 </div>
@@ -135,7 +135,7 @@ export function ServiceDetailContent({ serviceId }: { serviceId: Service["id"] }
                   <div className="text-xs tracking-widest text-cyan uppercase font-bold">How We Work</div>
                   <div
                     className="mt-3 text-2xl sm:text-3xl font-[800] tracking-tight text-white uppercase"
-                    style={{ fontFamily: "var(--font-display)" }}
+                    style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
                   >
                     A focused process that keeps delivery clean.
                   </div>
@@ -150,7 +150,7 @@ export function ServiceDetailContent({ serviceId }: { serviceId: Service["id"] }
                     className="rounded-2xl border border-cyan/10 bg-white/5 p-5 transition-all hover:border-cyan/30 hover:bg-cyan/5"
                   >
                     <div className="text-xs uppercase tracking-[0.24em] text-cyan font-bold">0{index + 1}</div>
-                    <div className="mt-3 text-lg font-[800] tracking-tight text-white uppercase" style={{ fontFamily: "var(--font-display)" }}>
+                    <div className="mt-3 text-lg font-[800] tracking-tight text-white uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                       {step.title}
                     </div>
                     <p className="mt-3 text-sm leading-7 text-gray2">{step.description}</p>
@@ -166,7 +166,7 @@ export function ServiceDetailContent({ serviceId }: { serviceId: Service["id"] }
                 <div className="text-xs tracking-widest text-cyan uppercase font-bold">Next Step</div>
                 <div
                   className="mt-3 text-2xl sm:text-3xl font-[800] tracking-tight text-white uppercase"
-                  style={{ fontFamily: "var(--font-display)" }}
+                  style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
                 >
                   Need this service for your business?
                 </div>

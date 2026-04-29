@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     path: "/",
     keywords: [
-      "TechLine Venture homepage",
+      "Techline Venture homepage",
       "software development agency",
       "website design and development",
       "digital solutions company",

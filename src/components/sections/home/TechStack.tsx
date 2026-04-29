@@ -220,11 +220,8 @@ export function TechStack() {
       <div className="container-max container-px relative z-10">
         {/* Title + copy (centered like screenshot) */}
         <div className="mx-auto max-w-3xl text-center">
-          <h2
-            className="text-3xl font-black tracking-tight text-[#0a1628] sm:text-5xl md:text-6xl"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Enterprise Market Challenges
+          <h2 className="mt-6 text-4xl font-black tracking-tighter text-[#0a1628] sm:text-6xl uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+            Our <span className="text-cyan">Tech Stack</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-sm leading-relaxed text-[#0a1628]/70 sm:text-base">
             In today&apos;s digital economy enterprises must overcome complex market dynamics to sustain competitive advantage and deliver premium customer experiences at scale.

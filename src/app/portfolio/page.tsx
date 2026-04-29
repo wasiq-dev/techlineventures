@@ -7,7 +7,7 @@ import { buildMetadata } from "@/src/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "Portfolio",
   description:
-    "See selected TechLine Venture projects across web, mobile, e-commerce, software, and design to understand our delivery quality and product thinking.",
+    "See selected Techline Venture projects across web, mobile, e-commerce, software, and design to understand our delivery quality and product thinking.",
   path: "/portfolio",
   keywords: ["software portfolio", "website design portfolio", "mobile app case studies"],
 });

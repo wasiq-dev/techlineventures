@@ -22,7 +22,7 @@ export function CtaBanner() {
             <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
               <div>
                 <div className="text-xs tracking-widest text-cyan uppercase font-bold">Let’s talk</div>
-                <div className="mt-3 text-3xl sm:text-4xl font-[800] tracking-tight text-[#0a1628]" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="mt-3 text-3xl sm:text-4xl font-[800] tracking-tight text-[#0a1628]" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   Ready to build something premium?
                 </div>
                 <p className="mt-4 text-[#0a1628]/70 max-w-2xl">

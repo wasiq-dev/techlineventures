@@ -91,7 +91,7 @@ export function PortfolioHorizontal() {
                 <div className="h-px w-8 bg-cyan/30" />
                 <div className="text-[10px] font-bold tracking-[0.3em] text-cyan uppercase">Selected Work</div>
               </div>
-              <h2 className="mt-4 text-4xl font-black tracking-tighter text-[#0a1628] sm:text-6xl uppercase">
+              <h2 className="mt-4 text-4xl font-black tracking-tighter text-[#0a1628] sm:text-6xl uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                 Featured <span className="text-cyan">Projects</span>
               </h2>
             </div>

@@ -39,7 +39,7 @@ export function ServicesPageContent() {
             <div className="relative overflow-hidden rounded-3xl border border-[#0a1628]/10 bg-white/40 p-8 sm:p-10 backdrop-blur-md shadow-[0_24px_60px_rgba(0,0,0,0.06)] flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               <div>
                 <div className="text-xs tracking-[0.2em] text-cyan uppercase font-bold">Specialties</div>
-                <div className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628]" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628]" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   {reduceMotion ? (
                     "Website Development"
                   ) : (
@@ -96,7 +96,7 @@ export function ServicesPageContent() {
             <div className="relative overflow-hidden rounded-3xl border border-[#0a1628]/10 bg-white/40 p-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 backdrop-blur-md shadow-[0_24px_60px_rgba(0,0,0,0.06)]">
               <div>
                 <div className="text-xs tracking-widest text-cyan uppercase font-bold">Pricing</div>
-                <div className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628]" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="mt-3 text-2xl sm:text-3xl font-extrabold tracking-tight text-[#0a1628]" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   Custom pricing for every project.
                 </div>
                 <div className="mt-3 text-[#0a1628]/70 max-w-2xl">

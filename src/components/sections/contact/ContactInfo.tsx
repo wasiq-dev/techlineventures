@@ -5,12 +5,12 @@ import { RiMapPin2Line, RiPhoneLine, RiMailLine, RiTimeLine } from "react-icons/
 export function ContactInfo({
   company,
 }: {
-  company: { address: string; phone: string; email: string };
+  company: { address: string; email: string };
 }) {
   return (
     <div className="card p-8 sm:p-10 bg-gradient-to-br from-cyan/[0.02] to-blue-50/[0.02] backdrop-blur-md border border-cyan/10 shadow-[0_24px_60px_rgba(0,229,255,0.05)]">
       <div className="flex items-center justify-between gap-3">
-        <div className="text-2xl font-[800] tracking-tight text-white" style={{ fontFamily: "var(--font-display)" }}>
+        <div className="text-2xl font-[800] tracking-tight text-white" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
           Contact info
         </div>
         <div className="inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/5 px-3 py-1 text-xs">
@@ -30,16 +30,6 @@ export function ContactInfo({
           <div>
             <div className="text-gray2/50 font-bold uppercase tracking-widest text-[10px]">Address</div>
             <div className="mt-1 leading-relaxed font-medium text-white">{company.address}</div>
-          </div>
-        </div>
-
-        <div className="flex items-start gap-3">
-          <span className="mt-0.5 h-9 w-9 rounded-xl grid place-items-center border border-cyan/20 bg-cyan/5 text-cyan">
-            <RiPhoneLine className="h-5 w-5" />
-          </span>
-          <div>
-            <div className="text-gray2/50 font-bold uppercase tracking-widest text-[10px]">Phone</div>
-            <div className="mt-1 font-medium text-white">{company.phone}</div>
           </div>
         </div>
 

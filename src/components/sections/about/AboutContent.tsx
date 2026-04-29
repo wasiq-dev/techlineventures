@@ -35,13 +35,13 @@ export function AboutContent() {
             <SectionReveal>
               <div className="relative">
                 <div className="text-xs tracking-[0.2em] text-cyan uppercase font-bold">Our Philosophy</div>
-                <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] text-[#0a1628]" style={{ fontFamily: "var(--font-display)" }}>
+                <h2 className="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] text-[#0a1628]" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   Beyond Code. <br />
                   <span className="text-[#0a1628]/70">We Build Partnerships.</span>
                 </h2>
                 <div className="mt-8 space-y-6 text-lg text-[#0a1628]/80 leading-relaxed">
                   <p>
-                    TechLine Venture isn&apos;t just a development agency; we are your technical co-founders. 
+                    Techline Venture isn&apos;t just a development agency; we are your technical co-founders. 
                     We bridge the gap between complex technology and business growth by delivering 
                     solutions that are as beautiful as they are functional.
                   </p>
@@ -106,7 +106,7 @@ export function AboutContent() {
         <div className="container-max container-px text-center relative z-10">
           <SectionReveal>
             <div className="text-xs tracking-[0.2em] text-cyan uppercase font-bold mb-4">Core Principles</div>
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white uppercase" style={{ fontFamily: "var(--font-display)" }}>
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
               Values that Drive us.
             </h2>
           </SectionReveal>
@@ -125,7 +125,7 @@ export function AboutContent() {
                 className="group relative overflow-hidden rounded-2xl border border-cyan/10 bg-gradient-to-br from-cyan/[0.02] to-blue-50/[0.02] p-10 transition-all hover:border-cyan/40 hover:bg-cyan/[0.04] hover:shadow-[0_10px_30px_rgba(0,229,255,0.1)] hover:-translate-y-0.5 text-left"
               >
                 <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-cyan/5 blur-2xl group-hover:bg-cyan/10 transition-colors" />
-                <div className="text-2xl font-extrabold tracking-tight text-white uppercase" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="text-2xl font-extrabold tracking-tight text-white uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   {v.title}
                 </div>
                 <div className="mt-4 text-gray2 leading-relaxed text-sm transition-colors group-hover:text-white">
@@ -149,7 +149,7 @@ export function AboutContent() {
 
         <div className="container-max container-px relative z-10">
           <SectionReveal>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0a1628] uppercase" style={{ fontFamily: "var(--font-display)" }}>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0a1628] uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
               Our impact
             </h2>
           </SectionReveal>
@@ -157,7 +157,7 @@ export function AboutContent() {
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((s) => (
               <div key={s.label} className="relative overflow-hidden rounded-2xl border border-[#0a1628]/10 bg-white/40 p-6 backdrop-blur-md shadow-[0_24px_60px_rgba(0,0,0,0.06)]">
-                <div className="text-3xl font-extrabold tracking-tight text-[#0a1628]" style={{ fontFamily: "var(--font-display)" }}>
+                <div className="text-3xl font-extrabold tracking-tight text-[#0a1628]" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   <StatCounter value={s.value} suffix={s.suffix} />
                 </div>
                 <div className="mt-2 text-xs font-bold text-[#0a1628]/50 uppercase tracking-widest">{s.label}</div>
@@ -167,7 +167,7 @@ export function AboutContent() {
 
           <div className="mt-12 relative overflow-hidden rounded-3xl border border-[#0a1628]/10 bg-white/40 p-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 backdrop-blur-md shadow-[0_24px_60px_rgba(0,0,0,0.06)]">
             <div>
-              <div className="text-2xl font-extrabold tracking-tight text-[#0a1628] uppercase" style={{ fontFamily: "var(--font-display)" }}>
+              <div className="text-2xl font-extrabold tracking-tight text-[#0a1628] uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                 Ready to work with us?
               </div>
               <div className="mt-2 text-[#0a1628]/70 font-medium">Tell us what you&apos;re building — we&apos;ll help you ship it.</div>

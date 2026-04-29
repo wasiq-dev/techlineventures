@@ -36,7 +36,7 @@ export function LoadingScreen() {
             >
               <Image
                 src="/images/logo.png"
-                alt="TechLine Venture"
+                alt="Techline Venture"
                 fill
                 className="object-contain"
                 priority

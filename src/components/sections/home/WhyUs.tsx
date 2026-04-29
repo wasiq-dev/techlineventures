@@ -29,9 +29,10 @@ export function WhyUs() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-start">
           <SectionReveal>
             <div>
-              <div className="text-[10px] font-bold tracking-[0.3em] text-cyan uppercase">Why TechLine</div>
+              <div className="text-[10px] font-bold tracking-[0.3em] text-cyan uppercase">Why Techline</div>
               <h2
                 className="mt-3 text-3xl sm:text-5xl font-[900] tracking-tighter uppercase text-white"
+                style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
               >
                 Global speed, <br /> global craft.
               </h2>
@@ -47,7 +48,7 @@ export function WhyUs() {
                 viewport={{ once: true, amount: 0.2 }}
               >
                 <div className="text-[10px] font-bold tracking-widest text-cyan uppercase">We’re always open</div>
-                <div className="mt-2 text-2xl font-[900] tracking-tight text-white uppercase">
+                <div className="mt-2 text-2xl font-[900] tracking-tight text-white uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                   Let’s build something premium.
                 </div>
               </motion.div>
@@ -72,7 +73,7 @@ export function WhyUs() {
                     {p.n}
                   </div>
                   <div className="flex-1">
-                    <div className="text-xl font-[900] tracking-tight text-white transition-colors group-hover:text-cyan uppercase">
+                    <div className="text-xl font-[900] tracking-tight text-white transition-colors group-hover:text-cyan uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                       {p.title}
                     </div>
                     <div className="mt-2 text-sm leading-relaxed text-gray2 transition-colors group-hover:text-white">{p.desc}</div>

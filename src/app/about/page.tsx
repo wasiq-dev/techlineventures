@@ -7,9 +7,9 @@ import { buildMetadata } from "@/src/lib/seo";
 export const metadata: Metadata = buildMetadata({
   title: "About",
   description:
-    "Learn about TechLine Venture, a software and digital solutions company focused on premium design, clear communication, and fast delivery.",
+    "Learn about Techline Venture, a software and digital solutions company focused on premium design, clear communication, and fast delivery.",
   path: "/about",
-  keywords: ["about TechLine Venture", "software company", "digital agency"],
+  keywords: ["about Techline Venture", "software company", "digital agency"],
 });
 
 export default function AboutPage() {

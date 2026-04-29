@@ -24,7 +24,7 @@ export function PageHero({
 
       <div className="container-max container-px pt-8 sm:pt-12 lg:pt-16 pb-14 relative z-10">
         {kicker && <div className="text-xs tracking-widest text-cyan uppercase">{kicker}</div>}
-        <h1 className="mt-3 text-4xl sm:text-5xl font-[800] tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
+        <h1 className="mt-3 text-4xl sm:text-5xl font-[800] tracking-tight" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
           {title}
         </h1>
         {subtitle && <p className="mt-4 muted max-w-2xl">{subtitle}</p>}

@@ -138,7 +138,7 @@ export function ContactForm({ services }: { services: string[] }) {
                 <RiSparklingLine className="h-4 w-4" />
                 Start your project brief
               </div>
-              <h3 className="mt-4 text-2xl font-black tracking-tight text-white sm:text-3xl uppercase">
+              <h3 className="mt-4 text-2xl font-black tracking-tight text-white sm:text-3xl uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                 Tell us what you need and we will map the right next step.
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-gray2">

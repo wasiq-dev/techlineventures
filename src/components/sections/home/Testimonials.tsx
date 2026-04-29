@@ -28,8 +28,8 @@ const trustHighlights = [
   },
   {
     icon: RiSparklingLine,
-    label: "Location",
-    value: company.cityBadge,
+    label: "Quality focus",
+    value: "Modern tech stacks",
   },
 ] as const;
 
@@ -68,7 +68,7 @@ export function Testimonials() {
                 <div className="h-px w-8 bg-cyan/30" />
                 <div className="text-[10px] font-bold tracking-[0.3em] text-cyan uppercase">Social Proof</div>
               </div>
-              <h2 className="mt-4 text-4xl font-black tracking-tighter text-[#0a1628] sm:text-6xl uppercase">
+              <h2 className="mt-4 text-4xl font-black tracking-tighter text-[#0a1628] sm:text-6xl uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                 Client <span className="text-cyan">Trust</span>
               </h2>
             </div>
