@@ -135,15 +135,15 @@ export function Navbar() {
             <div className="h-[88px] flex items-center justify-between">
               <Link href="/" className="flex items-center group">
                 <motion.div 
-                  className="relative h-20 w-52"
+                  className="relative h-20 w-48"
                   whileHover={reduceMotion ? undefined : { scale: 1.05 }}
                   transition={{ duration: 0.2, ease: "easeOut" }}
                 >
                   <Image
-                    src="/images/logo.png"
+                    src="/images/logo-white.png.png"
                     alt="Techline Venture"
                     fill
-                    sizes="208px"
+                    sizes="368px"
                     className="object-contain"
                     priority
                   />

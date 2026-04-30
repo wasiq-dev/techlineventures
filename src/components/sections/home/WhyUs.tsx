@@ -63,20 +63,20 @@ export function WhyUs() {
             viewport={{ once: true, amount: 0.2 }}
           >
             {points.map((p) => (
-              <motion.div 
-                key={p.n} 
-                variants={slideInRight} 
-                className="group relative overflow-hidden rounded-xl border border-cyan/10 bg-gradient-to-br from-cyan/[0.02] to-blue-50/[0.02] p-6 transition-all duration-300 hover:border-cyan/40 hover:bg-cyan/[0.04] hover:shadow-[0_10px_30px_rgba(0,229,255,0.1)] hover:-translate-y-0.5"
+              <motion.div
+                key={p.n}
+                variants={slideInRight}
+                className="group relative overflow-hidden rounded-2xl border-2 border-cyan/20 bg-gradient-to-br from-cyan/10 to-blue-500/10 p-8 shadow-[0_20px_50px_rgba(0,229,255,0.15)] transition-all duration-300 hover:border-cyan/50 hover:from-cyan/20 hover:to-blue-500/20 hover:shadow-[0_30px_70px_rgba(0,229,255,0.3)] hover:-translate-y-1"
               >
                 <div className="flex items-start gap-5">
-                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-sm border border-cyan/20 bg-cyan/5 text-[10px] font-bold text-cyan transition-all duration-300 group-hover:scale-110 group-hover:bg-cyan group-hover:text-navy">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border-2 border-cyan/30 bg-cyan text-sm font-bold text-navy shadow-[0_8px_20px_rgba(0,229,255,0.3)] transition-all duration-300 group-hover:scale-125 group-hover:border-cyan group-hover:shadow-[0_12px_30px_rgba(0,229,255,0.5)]">
                     {p.n}
                   </div>
                   <div className="flex-1">
-                    <div className="text-xl font-[900] tracking-tight text-white transition-colors group-hover:text-cyan uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+                    <div className="text-2xl font-black tracking-tight text-white transition-colors group-hover:text-cyan uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
                       {p.title}
                     </div>
-                    <div className="mt-2 text-sm leading-relaxed text-gray2 transition-colors group-hover:text-white">{p.desc}</div>
+                    <div className="mt-3 text-base leading-relaxed text-gray2 transition-colors group-hover:text-white">{p.desc}</div>
                   </div>
                 </div>
               </motion.div>

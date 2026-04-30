@@ -4,10 +4,10 @@
   --navy: #050d1f;
   --navy2: #0a1628;
   --navy3: #0f1e35;
-  --cyan: #00e5ff;
-  --cyan2: #00b8cc;
+  --cyan: #3a86ff;
+  --cyan2: #2563eb;
   --card: #0d1b2f;
-  --border: rgba(0, 229, 255, 0.12);
+  --border: rgba(58, 134, 255, 0.12);
   --gray: #8fa3b8;
   --gray2: #c5d5e8;
   --white: #ffffff;
@@ -57,7 +57,7 @@ h4 {
 }
 
 ::selection {
-  background: rgba(0, 229, 255, 0.22);
+  background: rgba(58, 134, 255, 0.22);
   color: var(--white);
 }
 
@@ -71,13 +71,13 @@ h4 {
 
   .glass-nav {
     background: rgba(5, 13, 31, 0.52);
-    border-bottom: 1px solid rgba(0, 229, 255, 0.10);
+    border-bottom: 1px solid rgba(58, 134, 255, 0.10);
     backdrop-filter: blur(16px);
   }
 
   .grid-bg {
-    background-image: linear-gradient(to right, rgba(0, 229, 255, 0.08) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 229, 255, 0.08) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(58, 134, 255, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(58, 134, 255, 0.08) 1px, transparent 1px);
     background-size: 56px 56px;
     mask-image: radial-gradient(60% 55% at 40% 20%, #000 40%, transparent 75%);
     opacity: 0.28;
@@ -89,21 +89,21 @@ h4 {
   .btn-primary {
     background: var(--cyan);
     color: var(--navy);
-    box-shadow: 0 10px 30px rgba(0, 229, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(58, 134, 255, 0.2);
   }
   .btn-primary:hover {
     background: var(--white);
     transform: translateY(-2px);
-    box-shadow: 0 15px 40px rgba(0, 229, 255, 0.3);
+    box-shadow: 0 15px 40px rgba(58, 134, 255, 0.3);
   }
   .btn-outline {
-    border: 1px solid rgba(0, 229, 255, 0.3);
+    border: 1px solid rgba(58, 134, 255, 0.3);
     background: transparent;
     color: var(--white);
   }
   .btn-outline:hover {
     border-color: var(--cyan);
-    background: rgba(0, 229, 255, 0.05);
+    background: rgba(58, 134, 255, 0.05);
     transform: translateY(-2px);
   }
 
