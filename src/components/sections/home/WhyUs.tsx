@@ -6,13 +6,12 @@ import { fadeUp, slideInRight, staggerChildren } from "@/src/lib/animations";
 
 const points = [
   {
-    n: "01",
     title: "Built for performance",
     desc: "Fast loading, clean code, and zero layout shift — premium feel by default.",
   },
-  { n: "02", title: "Design-led delivery", desc: "UI/UX that looks modern and converts. No generic templates." },
-  { n: "03", title: "Reliable communication", desc: "Clear timelines, crisp updates, and practical guidance." },
-  { n: "04", title: "Long-term partner", desc: "Launch, iterate, optimize — we support you beyond the first release." },
+  { title: "Design-led delivery", desc: "UI/UX that looks modern and converts. No generic templates." },
+  { title: "Reliable communication", desc: "Clear timelines, crisp updates, and practical guidance." },
+  { title: "Long-term partner", desc: "Launch, iterate, optimize — we support you beyond the first release." },
 ];
 
 export function WhyUs() {
@@ -62,22 +61,17 @@ export function WhyUs() {
             whileInView="show"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {points.map((p) => (
+            {points.map((p, index) => (
               <motion.div
-                key={p.n}
+                key={index}
                 variants={slideInRight}
-                className="group relative overflow-hidden rounded-2xl border-2 border-cyan/20 bg-gradient-to-br from-cyan/10 to-blue-500/10 p-8 shadow-[0_20px_50px_rgba(0,229,255,0.15)] transition-all duration-300 hover:border-cyan/50 hover:from-cyan/20 hover:to-blue-500/20 hover:shadow-[0_30px_70px_rgba(0,229,255,0.3)] hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-2xl border-2 border-cyan/20 bg-gradient-to-br from-cyan/10 to-blue-500/10 p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,229,255,0.15)] transition-all duration-300 hover:border-cyan/50 hover:from-cyan/20 hover:to-blue-500/20 hover:shadow-[0_30px_70px_rgba(0,229,255,0.3)] hover:-translate-y-1"
               >
-                <div className="flex items-start gap-5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border-2 border-cyan/30 bg-cyan text-sm font-bold text-navy shadow-[0_8px_20px_rgba(0,229,255,0.3)] transition-all duration-300 group-hover:scale-125 group-hover:border-cyan group-hover:shadow-[0_12px_30px_rgba(0,229,255,0.5)]">
-                    {p.n}
+                <div className="flex-1">
+                  <div className="text-xl sm:text-2xl font-black tracking-tight text-white transition-colors group-hover:text-cyan uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
+                    {p.title}
                   </div>
-                  <div className="flex-1">
-                    <div className="text-2xl font-black tracking-tight text-white transition-colors group-hover:text-cyan uppercase" style={{ fontFamily: "Arial, Helvetica, sans-serif" }}>
-                      {p.title}
-                    </div>
-                    <div className="mt-3 text-base leading-relaxed text-gray2 transition-colors group-hover:text-white">{p.desc}</div>
-                  </div>
+                  <div className="mt-2 sm:mt-3 text-sm sm:text-base leading-relaxed text-gray2 transition-colors group-hover:text-white">{p.desc}</div>
                 </div>
               </motion.div>
             ))}

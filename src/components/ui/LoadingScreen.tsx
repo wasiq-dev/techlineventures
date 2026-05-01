@@ -32,7 +32,7 @@ export function LoadingScreen() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative h-24 w-80 mb-8"
+              className="relative h-20 w-56 mb-8"
             >
               <Image
                 src="/images/logo-white.png.png"
