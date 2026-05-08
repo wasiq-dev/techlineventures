@@ -36,8 +36,7 @@ export function PortfolioCard({
           <div className="inline-flex w-fit rounded-full border border-[rgba(0,229,255,0.16)] bg-[rgba(0,229,255,0.06)] px-2 py-0.5 text-[10px] sm:px-3 sm:py-1 sm:text-xs font-medium text-cyan transition-colors group-hover:bg-cyan/10">
             {item.category}
           </div>
-          <div className="flex flex-col items-end gap-1">
-            <div className="text-xs font-medium tracking-[0.24em] text-[rgba(197,213,232,0.42)] group-hover:text-cyan/40 transition-colors">0{index + 1}</div>
+          <div className="flex items-end">
             <RiArrowRightUpLine className="h-5 w-5 text-cyan opacity-0 -translate-x-2 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0" />
           </div>
         </div>
