@@ -9,7 +9,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Contact Techline Venture to discuss websites, mobile apps, software systems, branding, SEO, or ongoing support. Get a clear scope, timeline, and quote.",
   path: "/contact",
-  keywords: ["contact software company", "get website development quote", "Karachi software agency contact"],
+  keywords: ["contact software company", "get website development quote", "Wyoming software agency contact"],
 });
 
 export default function ContactPage() {

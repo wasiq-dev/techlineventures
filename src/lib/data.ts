@@ -2,9 +2,8 @@ export const company = {
   name: "Techline Venture",
   tagline: "Building Smart Tech for Modern Businesses",
   email: "info@techlineventure.com",
-  address:
-    "Suite #B3, 2nd Floor, Haryani Centre, Plot #21-E, Zamzama Lane-4, Zamzama Commercial, Phase-V, DHA, Karachi 75500",
-  cityBadge: "🇵🇰 Karachi, Pakistan",
+  address: "30 N Gould St Ste R, Sheridan, Wyoming 82801, USA",
+  cityBadge: "🇺🇸 Sheridan, Wyoming, USA",
 } as const;
 
 export type Service = {
@@ -481,7 +480,7 @@ export const testimonials = [
   {
     id: "t1",
     name: "Ahmed Khan",
-    title: "CEO, RetailFirst PK",
+    title: "CEO, RetailFirst US",
     rating: 5,
     quote:
       "Techline Venture delivered a premium website that loads fast and looks incredible. Communication was clear, timelines were tight, and results were real.",
@@ -500,7 +499,7 @@ export const testimonials = [
     title: "Founder, Studio Mirza",
     rating: 5,
     quote:
-      "They feel like a Karachi startup that can compete globally—craft, speed, and attention to detail. We’ll definitely work together again.",
+      "They feel like a Wyoming startup that can compete globally—craft, speed, and attention to detail. We’ll definitely work together again.",
   },
 ] as const;
 

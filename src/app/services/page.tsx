@@ -9,7 +9,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Explore Techline Venture services including website development, mobile apps, e-commerce, UI/UX design, custom software, SEO, branding, integrations, and maintenance.",
   path: "/services",
-  keywords: ["software services Pakistan", "website and app development services", "custom software agency"],
+  keywords: ["software services USA", "website and app development services", "custom software agency"],
 });
 
 export default function ServicesPage() {

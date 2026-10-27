@@ -102,8 +102,8 @@ export function buildServiceMetadata(serviceId: keyof typeof servicePageContent)
     path: `/services/${serviceSlugs[serviceId] ?? serviceId}`,
     keywords: [
       service.title,
-      `${service.title} Pakistan`,
-      `${service.title} Karachi`,
+      `${service.title} USA`,
+      `${service.title} Wyoming`,
       company.name,
     ],
   });

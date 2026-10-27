@@ -28,8 +28,8 @@ export const metadata: Metadata = {
   applicationName: siteName,
   keywords: [
     "Techline Venture",
-    "software house Pakistan",
-    "web development company Karachi",
+    "software house USA",
+    "web development company Wyoming",
     "mobile app development company",
     "custom software solutions",
     "UI UX design agency",
@@ -90,9 +90,11 @@ const organizationJsonLd = {
   email: company.email,
   address: {
     "@type": "PostalAddress",
-    streetAddress: company.address,
-    addressLocality: "Karachi",
-    addressCountry: "PK",
+    streetAddress: "30 N Gould St Ste R",
+    addressLocality: "Sheridan",
+    addressRegion: "WY",
+    postalCode: "82801",
+    addressCountry: "US",
   },
   contactPoint: [
     {

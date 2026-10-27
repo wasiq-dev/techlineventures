@@ -52,7 +52,7 @@ export function WelcomePopup() {
     } else if (userMsg.includes("contact") || userMsg.includes("phone") || userMsg.includes("call") || userMsg.includes("whatsapp")) {
       botResponse = "You can email us at info@techlineventure.com or use our contact form to get in touch.";
     } else if (userMsg.includes("address") || userMsg.includes("location") || userMsg.includes("office")) {
-      botResponse = "Our office is located at Suite #B3, 2nd Floor, Haryani Centre, Zamzama, Phase-V, DHA, Karachi.";
+      botResponse = "Our office is located at 30 N Gould St Ste R, Sheridan, Wyoming 82801, USA.";
     } else if (userMsg.includes("service") || userMsg.includes("what you do")) {
       botResponse = "We provide Web Development, Mobile Apps, E-commerce Solutions, UI/UX Design, and Digital Marketing.";
     } else {
